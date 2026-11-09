@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>免費線上圖片互動標記工具｜圖片熱點導覽、產品介紹與 HTML 嵌入｜Hotspot Studio</title>
+<meta name="description" content="免費使用 WUMETAX Hotspot Studio 圖片互動導覽製作器，上傳圖片即可新增可點擊標記、文字說明、圖片及連結，支援產品介紹、室內空間導覽、網站操作教學與手機 RWD 預覽，一鍵匯出互動 HTML 或網站嵌入碼，資料在瀏覽器本機處理。">
+<link rel="canonical" href="https://hotspot-studio.wumetax.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hotspot Studio｜圖片互動導覽製作工作站">
+<meta property="og:description" content="讓圖片上的每個細節都能被點開探索。免費製作與匯出互動圖片。">
+<meta property="og:url" content="https://hotspot-studio.wumetax.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hotspot Studio｜圖片互動導覽製作工作站">
+<meta name="twitter:description" content="免費製作互動圖片，匯出 HTML 或嵌入自己的網站。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%232563eb'/%3E%3Ccircle cx='20' cy='20' r='10' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='4' fill='white'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"WUMETAX Hotspot Studio","applicationCategory":"DesignApplication","operatingSystem":"Web browser","url":"https://hotspot-studio.wumetax.com/","inLanguage":"zh-Hant","author":{"@type":"Organization","name":"WUMETAX","url":"https://wumetax.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"}}</script>
+<style>
+:root{color-scheme:light;--ink:#111827;--muted:#526077;--line:#e5e7eb;--blue:#2563eb;--soft:#eff6ff;--surface:#f3f4f6;font:15px/1.55 Outfit,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);background:var(--surface)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0} [hidden]{display:none!important}
+button,input,textarea,select{font:inherit;color:inherit} button{cursor:pointer} button:disabled{cursor:default;opacity:.43}
+button,.button{min-height:36px;border:1px solid var(--line);border-radius:8px;background:white;padding:5px 11px;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;white-space:nowrap;font-weight:600;font-size:.88rem}
+button:hover:not(:disabled),.button:hover{background:var(--soft);border-color:#bfd7fa;color:#1d4ed8}
+button.primary{background:var(--blue);color:white;border-color:var(--blue)} button.primary:hover:not(:disabled){background:#1d4ed8;color:white}
+button[aria-pressed="true"]{background:#dbeafe;color:#1e40af;border-color:#a4c8fb}
+:focus-visible{outline:3px solid #3b82f6;outline-offset:3px}
+a{color:#1d4ed8} svg.icon{width:17px;height:17px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+h1,h2,h3,p{margin:0} label{display:grid;gap:5px;font-size:.86rem;font-weight:600;min-width:0}
+input:not([type=checkbox]):not([type=color]),select,textarea{width:100%;min-width:0;padding:7px 9px;border:1px solid #cdd5e2;background:white;border-radius:8px}
+input[type=color]{width:100%;height:37px;padding:3px;border:1px solid #cdd5e2;background:white;border-radius:8px}
+input[type=checkbox]{width:17px;height:17px;accent-color:var(--blue);margin:0} textarea{resize:vertical} .check{display:flex;align-items:center;gap:8px}
+.bar{background:#111827;color:white;padding:12px max(16px,calc((100% - 1696px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:1.06rem;font-weight:700}
+.brand-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#2563eb}.brand-icon svg{width:24px;height:24px}
+.brand small{display:block;font-size:.64rem;letter-spacing:.13em;color:#a8b6cf;font-weight:650}
+.bar button:not(.primary){background:#1f2937;border-color:#3c4658;color:#f1f5ff}.bar button:hover:not(:disabled){border-color:#7ba4ed}
+.bar button[aria-pressed="true"]{background:#334b77}.actions,.row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.row>*{min-width:0}
+.shell{max-width:1728px;margin:auto;padding:22px 16px 0}
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.eyebrow{font-size:.7rem;letter-spacing:.17em;font-weight:750;color:#1d4ed8}
+h1{font-size:clamp(1.35rem,2.6vw,2rem);letter-spacing:-.035em;line-height:1.25;margin:4px 0}
+.muted,.hint{color:var(--muted);font-size:.85rem;overflow-wrap:anywhere}.hint{font-size:.77rem}
+.project{min-width:min(230px,100%);max-width:340px}.project span{color:var(--muted)}
+.workspace{display:grid;grid-template-columns:minmax(210px,242px) minmax(0,1fr) minmax(252px,292px);gap:12px;align-items:start}
+.panel,.workbench{background:white;border:1px solid var(--line);border-radius:13px;min-width:0;box-shadow:0 2px 4px #11182706}
+.panel{padding:13px;display:grid;gap:13px}
+.panel h2,.toolbar h2{font-size:.97rem}.section{border-top:1px solid var(--line);padding-top:12px;display:grid;gap:8px}
+.spread{display:flex;justify-content:space-between;align-items:center;gap:7px}
+.badge{font-size:.72rem;padding:1px 7px;color:#245396;background:#eaf2ff;border-radius:20px;font-weight:700}
+.list{display:grid;gap:5px;max-height:300px;overflow:auto;padding:3px;list-style:none;margin:0}
+.list button{width:100%;justify-content:flex-start;text-align:left;white-space:normal;overflow-wrap:anywhere;line-height:1.3;padding:8px}.list button strong{font-size:.82rem}.list button small{display:block;font-size:.71rem;color:var(--muted);margin-top:3px}
+.num{background:#eaf1ff;color:#214a96;border-radius:7px;min-width:27px;padding:5px 3px;text-align:center;font-size:.75rem}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:11px 12px;border-bottom:1px solid var(--line)}
+.canvas{height:clamp(390px,60vh,720px);position:relative;overflow:auto;background-color:#f3f6fc;background-image:radial-gradient(#c9d6e9 1px,transparent 1px);background-size:16px 16px;overscroll-behavior:contain}
+.board{display:grid;place-items:center;min-width:100%;min-height:100%;width:max-content;height:max-content;padding:44px;position:relative}
+.frame{position:relative;flex:none;isolation:isolate;line-height:0}.frame img{width:100%;height:100%;display:block;user-select:none}
+.canvas[data-tool=add] .frame img{cursor:crosshair}.canvas[data-tool=pan]{cursor:grab;touch-action:none}.canvas[data-tool=pan].dragging{cursor:grabbing}
+.canvas.drop{outline:3px dashed #2563eb;outline-offset:-6px;background-color:#e5efff}
+.empty{height:100%;display:grid;place-items:center;text-align:center;padding:18px}
+.empty-inner{display:grid;justify-items:center;gap:10px;width:min(100%,365px);padding:21px;background:#ffffffef;border:1px solid #dce5f4;border-radius:16px;box-shadow:0 12px 30px #20487e10}
+.empty-inner h3{font-size:1.16rem}.empty-art{width:min(190px,100%);height:auto}
+.statusbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line);font-size:.75rem;color:var(--muted);min-height:39px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.form{display:grid;gap:9px}.form fieldset{min-width:0;border:0;margin:0;padding:0;display:grid;gap:9px}
+.form details{border:1px solid var(--line);border-radius:8px;padding:8px}.form details>div{margin-top:8px}
+summary{cursor:pointer;font-weight:650}.thumb{width:100%;max-height:110px;object-fit:contain;border:1px solid var(--line);border-radius:6px}
+.editor-marker{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);z-index:1;min-width:0;min-height:0;width:var(--size);height:var(--size);padding:0;border:var(--border) solid var(--stroke);border-radius:50%;background:var(--fill);color:var(--fg);box-shadow:var(--shadow);opacity:var(--opacity);font-size:var(--font);line-height:1;touch-action:none}
+.editor-marker:hover:not(:disabled),.editor-marker[aria-pressed=true]{background:var(--fill);color:var(--fg);border-color:var(--stroke);z-index:2}
+.editor-marker[aria-pressed=true]{outline:3px solid #111827;outline-offset:3px}.editor-marker[data-hidden=true]{opacity:.45;border-style:dashed}
+.editor-marker svg{width:57%;height:57%;pointer-events:none}
+.editor-marker[data-pulse=true]::after{content:"";position:absolute;inset:-3px;border:2px solid var(--fill);border-radius:50%;pointer-events:none;animation:editorPulse 2.6s ease-out infinite}
+@keyframes editorPulse{from{transform:scale(.93);opacity:.85}75%,to{transform:scale(1.55);opacity:0}}
+.mobile-tabs{display:none}
+dialog{border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:0 20px 75px #11182744;width:min(620px,calc(100% - 24px));max-height:calc(100dvh - 24px);color:var(--ink)}
+dialog::backdrop{background:#101b37a8}dialog h2{font-size:1.12rem}.dialog-body{display:grid;gap:12px;margin-top:13px}
+#previewDialog{width:min(1540px,calc(100% - 24px))}.preview-scroll{overflow:auto;background:#e9edf5;border-radius:10px;padding:12px;max-height:70dvh}
+.preview-page{margin-inline:auto;background:white;width:var(--device);border-radius:10px;overflow:hidden}.context{padding:16px 20px}.context h3{margin-bottom:5px}
+.export-code{font-family:ui-monospace,monospace;font-size:.8rem;min-height:100px}
+.learn{margin:20px 0;display:grid;grid-template-columns:1.15fr 1fr;gap:12px}.learn .panel{padding:17px}.learn details{padding-top:7px;border-top:1px solid var(--line)}.learn p{font-size:.9rem;color:var(--muted)}.learn details p{margin-top:4px}
+footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:0 0 20px}
+.error{color:#b91c1c}.danger{color:#b91c1c}
+@media(max-width:1060px){.workspace{grid-template-columns:185px minmax(0,1fr) 235px}.shell{padding-inline:10px}.panel{padding:10px}}
+@media(max-width:850px){.workspace{grid-template-columns:minmax(0,1fr)}.workbench{grid-row:1}.canvas{height:clamp(280px,53vh,590px)}.mobile-tabs{display:flex;margin-bottom:9px}.workspace[data-panel=content] #leftPanel,.workspace[data-panel=points] #rightPanel{display:none}.learn{grid-template-columns:1fr}.shell{padding-top:15px}.intro{align-items:flex-start}}
+@media(max-width:500px){.bar{padding:10px;gap:9px}.actions{gap:4px}.actions button{padding-inline:7px}.toolbar{padding:8px}.preview-scroll{padding:5px}.statusbar{font-size:.7rem}.project{min-width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}.editor-marker[data-pulse=true]::after{animation:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand"><span class="brand-icon" data-icon="target"></span><span>Hotspot Studio<small>WUMETAX LAB</small></span></div>
+  <div class="actions" aria-label="專案工具">
+    <button id="newProject" data-icon="plus">新建</button><button id="openProjects" data-icon="folder">專案</button><button id="importProject" data-icon="upload">匯入</button><button id="saveProject" data-icon="save">儲存</button>
+    <button id="undo" data-icon="undo" aria-label="復原" title="復原（Ctrl + Z）"></button><button id="redo" data-icon="redo" aria-label="重做" title="重做（Ctrl + Shift + Z）"></button>
+    <button id="preview" data-icon="eye" aria-pressed="false">預覽</button><button id="export" class="primary" data-icon="download">匯出</button>
+  </div>
+</header>
+<main class="shell">
+  <section class="intro">
+    <div><p class="eyebrow">IMAGE HOTSPOT WORKSPACE</p><h1>圖片互動導覽製作工作站</h1><p class="muted">在圖片上標出細節，讓瀏覽者點開探索。</p></div>
+    <label class="project"><span>專案名稱</span><input id="projectName" maxlength="120" value="未命名專案" autocomplete="off"></label>
+  </section>
+  <nav class="mobile-tabs row" aria-label="手機工作區"><button id="showPoints" aria-pressed="true">圖片與標記</button><button id="showContent" aria-pressed="false">內容與外觀</button></nav>
+  <div class="workspace" id="workspace" data-panel="points">
+    <aside class="panel" id="leftPanel" aria-label="圖片與互動點">
+      <h2>背景圖片</h2>
+      <div class="row"><button id="uploadImage" class="primary" data-icon="upload">上傳圖片</button><button id="clearImage" aria-label="清除背景圖片" data-icon="trash"></button></div>
+      <p class="hint" id="imageInfo">支援 JPG、PNG、WebP</p>
+      <label id="backgroundAlt" hidden>背景圖片替代文字<input id="imageAlt" maxlength="250" placeholder="描述圖片的主要內容"></label>
+      <button id="compressImage" hidden>縮小或壓縮圖片</button>
+      <div class="section">
+        <div class="spread"><h2>互動點</h2><span class="badge" id="pointCount">0</span></div>
+        <button id="addPoint" data-icon="plus" aria-pressed="false">新增互動點</button>
+        <p class="hint" id="listHint">上傳圖片後，即可在畫面上標記位置。</p>
+        <ol class="list" id="pointList" aria-label="導覽順序"></ol>
+        <div class="row" id="listActions" hidden>
+          <button id="upPoint" aria-label="往前排序" title="往前排序" data-icon="up"></button><button id="downPoint" aria-label="往後排序" title="往後排序" data-icon="down"></button>
+          <button id="copyPoint" aria-label="複製互動點" title="複製互動點" data-icon="copy"></button><button id="togglePoint" aria-label="隱藏互動點" title="隱藏互動點" data-icon="eye"></button><button id="removePoint" aria-label="刪除互動點" title="刪除互動點" data-icon="trash"></button>
+        </div>
+      </div>
+      <div class="section"><h2>導覽設定</h2><label>瀏覽方式<select id="tourMode"><option value="free">自由探索</option><option value="guided">依序導覽</option></select></label></div>
+      <div class="section"><h2>示範範本</h2><div class="row" id="demos"><button data-demo="product">商品功能</button><button data-demo="room">室內空間</button><button data-demo="website">網站教學</button></div></div>
+    </aside>
+    <section class="workbench" aria-label="圖片編輯畫布">
+      <div class="toolbar">
+        <h2>圖片畫布</h2>
+        <div class="row">
+          <button id="selectTool" aria-pressed="true" data-icon="cursor">選取</button><button id="panTool" aria-pressed="false" data-icon="hand">移動畫布</button>
+          <button id="zoomOut" aria-label="縮小" title="縮小" data-icon="minus"></button><button id="zoomIn" aria-label="放大" title="放大" data-icon="plus"></button><button id="fitView">符合視窗</button><button id="actualView">100%</button>
+        </div>
+      </div>
+      <div class="canvas" id="canvas" data-tool="select">
+        <div class="empty" id="empty">
+          <div class="empty-inner">
+            <svg class="empty-art" viewBox="0 0 200 105" aria-hidden="true"><rect x="8" y="9" width="184" height="87" rx="11" fill="#eaf2ff" stroke="#ccddf9"/><path d="M9 80l45-30 23 17 37-35 53 42 24-11v22a10 10 0 0 1-10 10H19a10 10 0 0 1-10-10Z" fill="#bed7ff"/><circle cx="148" cy="35" r="10" fill="#f5c982"/><g fill="#2563eb" stroke="white" stroke-width="2"><circle cx="60" cy="59" r="11"/><circle cx="116" cy="43" r="11"/><circle cx="167" cy="72" r="11"/></g><path d="M55 59h10m-5-5v10m51-21h10m-5-5v10m46 24h10m-5-5v10" stroke="white" stroke-width="1.6"/></svg>
+            <h3>從一張圖片開始</h3><p class="muted">將圖片拖到這裡，或選擇檔案。也可以載入室內範本試做。</p>
+            <div class="row"><button id="emptyUpload" class="primary" data-icon="upload">選擇圖片</button><button data-demo="room">載入室內範本</button></div>
+          </div>
+        </div>
+        <div class="board" id="board" hidden><div class="frame" id="frame"><img id="mainImage" alt="" draggable="false"><div id="markers"></div></div></div>
+      </div>
+      <div class="statusbar"><span id="status" role="status">準備就緒 · 圖片在瀏覽器本機處理</span><span id="viewInfo"></span></div>
+    </section>
+    <aside class="panel" id="rightPanel" aria-label="互動點設定">
+      <div class="spread"><h2>互動點設定</h2><span class="badge" id="selectedBadge">尚未選取</span></div>
+      <p id="noPoint" class="hint">點選畫布或清單上的互動點，即可編輯內容、外觀和位置。</p>
+      <form id="pointForm" class="form" hidden>
+        <label>內容類型<select name="type"><option value="mixed">複合內容</option><option value="text">文字資訊</option><option value="image">圖片介紹</option><option value="link">外部連結</option></select></label>
+        <label>標題<input name="title" maxlength="120" required></label>
+        <label>副標題<input name="subtitle" maxlength="200"></label>
+        <label>介紹文字<textarea name="description" maxlength="5000" rows="3"></textarea></label>
+        <label>補充資訊<textarea name="extra" maxlength="3000" rows="2"></textarea></label>
+        <fieldset id="pointImageFields"><label>附加圖片網址（HTTPS）<input name="remote" type="url" maxlength="2048" placeholder="https://"></label><p class="hint">遠端圖片會連線至圖片主機。</p><div class="row"><button type="button" id="attachImage">上傳本機圖片</button><button type="button" id="removeAttachment">移除圖片</button></div><p class="hint" id="attachmentInfo"></p><img class="thumb" id="attachmentPreview" alt="" hidden referrerpolicy="no-referrer"><label>附圖替代文字<input name="alt" maxlength="250"></label></fieldset>
+        <fieldset id="pointLinkFields"><label>連結網址（HTTP／HTTPS）<input name="url" type="url" maxlength="2048" placeholder="https://"></label><label>連結按鈕文字<input name="linkLabel" maxlength="100"></label><label class="check"><input name="newTab" type="checkbox">另開分頁</label></fieldset>
+        <details open><summary>外觀與資訊視窗</summary><div class="form">
+          <label>標記樣式<select name="kind"><option value="number">編號圓點</option><option value="dot">一般圓點</option><option value="plus">加號標記</option><option value="info">資訊標記</option><option value="pulse">脈衝標記</option></select></label>
+          <label>資訊視窗<select name="panel"><option value="popover">浮動資訊卡</option><option value="side">側邊資訊面板</option><option value="modal">中央彈出視窗</option></select></label>
+          <div class="grid2"><label>標記大小（px）<input name="size" type="number" min="24" max="84"></label><label>邊框粗細（px）<input name="border" type="number" min="0" max="8"></label></div>
+          <div class="grid2"><label>背景顏色<input name="fill" type="color"></label><label>文字顏色<input name="fg" type="color"></label><label>邊框顏色<input name="stroke" type="color"></label><label>透明度（%）<input name="opacity" type="number" min="20" max="100"></label></div>
+          <div class="grid2"><label class="check"><input name="shadow" type="checkbox">陰影</label><label class="check"><input name="number" type="checkbox">顯示編號</label><label class="check"><input name="animate" type="checkbox">脈衝動畫</label></div>
+          <div class="row"><button type="button" id="applyStyle">套用全部</button><button type="button" id="resetStyle">恢復預設</button></div>
+        </div></details>
+        <details open><summary>位置設定</summary><div class="grid2"><label>X 位置（%）<input name="x" type="number" min="0" max="100" step="0.1"></label><label>Y 位置（%）<input name="y" type="number" min="0" max="100" step="0.1"></label></div><p class="hint">選取標記後可用方向鍵移動，按住 Shift 可加大移動幅度。</p></details>
+      </form>
+    </aside>
+  </div>
+  <section class="learn" aria-label="使用說明與常見問題">
+    <div class="panel"><h2>把一張圖片變成可探索的導覽</h2><p>圖片互動標記是放在圖上的可點擊按鈕，可以顯示說明、細節照片及連結。你可以為產品標出功能，替室內空間加入房間介紹，或把網站操作拆成依序瀏覽的步驟。</p><p>上傳圖片後，選擇「新增互動點」並點擊圖上的位置。完成內容與樣式後，切換預覽確認效果，再匯出完整 HTML 或複製網站嵌入碼。</p></div>
+    <div class="panel"><h2>常見問題</h2><details><summary>如何放到 WordPress？</summary><p>可在允許指令碼的 Gutenberg 自訂 HTML 區塊貼上嵌入碼。若網站移除指令碼，請先將下載的 HTML 部署到 HTTPS 網址，再使用匯出區的 iframe 產生器。</p></details><details><summary>手機可以編輯嗎？這個工具免費嗎？</summary><p>可以。手機上可點選、拖曳和編輯標記，並切換不同裝置寬度預覽。工具免費使用。</p></details><details><summary>圖片會上傳嗎？</summary><p>本機圖片與專案留在目前瀏覽器。輸入的遠端圖片會連線至圖片主機。可下載 JSON 備份以便換裝置或移轉瀏覽器。</p></details></div>
+  </section>
+  <footer><span>© 2026 WUMETAX · 由 WUMETAX 開發</span><span><a href="https://wumetax.com/">WUMETAX</a> · <a href="https://wumetax.com/lab/">更多免費工具</a></span></footer>
+</main>
+<input type="file" id="backgroundFile" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" hidden>
+<input type="file" id="attachmentFile" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" hidden>
+<input type="file" id="projectFile" accept=".json,application/json" hidden>
+<dialog id="choiceDialog" aria-labelledby="choiceTitle"><div class="spread"><h2 id="choiceTitle"></h2><button data-close aria-label="關閉">關閉</button></div><div class="dialog-body"><p id="choiceText"></p><div class="row" id="choiceButtons"></div></div></dialog>
+<dialog id="projectsDialog" aria-labelledby="projectsTitle"><div class="spread"><h2 id="projectsTitle">本機專案</h2><button data-close>關閉</button></div><div class="dialog-body"><p class="hint">專案儲存在此瀏覽器。跨裝置使用時可匯出 JSON 備份。</p><div class="form" id="savedProjects"></div></div></dialog>
+<dialog id="compressionDialog" aria-labelledby="compressionTitle"><div class="spread"><h2 id="compressionTitle">縮小或壓縮圖片</h2><button data-close>關閉</button></div><form class="dialog-body" id="compressionForm"><p id="compressionBefore"></p><label>最大寬度（px）<input name="width" type="number" min="64" max="8192" value="1600" required></label><label>輸出格式<select name="format"><option value="image/webp">WebP</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select></label><label>JPEG／WebP 品質（%）<input name="quality" type="number" min="10" max="100" value="85" required></label><p class="hint">JPEG 會以白色填補透明區域。原始檔案保留在你的裝置上。</p><div class="row"><button type="submit">計算處理結果</button><button type="button" id="useCompressed" class="primary" disabled>套用處理後圖片</button></div><p id="compressionAfter" role="status"></p></form></dialog>
+<dialog id="previewDialog" aria-labelledby="previewTitle"><div class="spread"><h2 id="previewTitle">作品預覽</h2><button data-close>返回編輯</button></div><div class="dialog-body">
+  <div class="row"><label>裝置寬度<select id="device"><option value="1440">桌面 1440 px</option><option value="768">平板 768 px</option><option value="390">手機 390 px</option><option value="360">手機 360 px</option><option value="custom">自訂</option></select></label><label id="customDevice" hidden>自訂寬度（px）<input type="number" id="deviceWidth" min="280" max="2400" value="480"></label><label>預覽情境<select id="context"><option value="image">僅圖片</option><option value="article">網頁文章</option><option value="product">商品介紹</option></select></label><label>瀏覽方式<select id="previewTour"><option value="free">自由探索</option><option value="guided">依序導覽</option></select></label></div>
+  <div class="preview-scroll"><div class="preview-page" id="previewPage"><div id="previewBefore" class="context" hidden></div><div id="previewMount"></div><div id="previewAfter" class="context" hidden></div></div></div>
+</div></dialog>
+<dialog id="exportDialog" aria-labelledby="exportTitle"><div class="spread"><h2 id="exportTitle">匯出與嵌入</h2><button data-close>關閉</button></div><div class="dialog-body">
+  <div class="row"><button id="downloadHtml" class="primary" data-icon="download">下載完整 HTML</button><button id="downloadJson" data-icon="download">匯出專案 JSON</button></div><p class="hint" id="exportSize"></p>
+  <label>嵌入方式<select id="embedMode"><option value="inline">自包含 HTML 嵌入碼</option><option value="iframe">已部署作品的 iframe</option></select></label>
+  <p class="hint" id="embedHint"></p>
+  <div class="form" id="iframeFields" hidden><label>已部署的 HTTPS 網址<input id="iframeUrl" type="url" placeholder="https://example.com/guide.html" maxlength="2048"></label><div class="grid2"><label>嵌入高度（px）<input id="iframeHeight" type="number" min="160" max="3000" value="600"></label><label>嵌入標題<input id="iframeTitle" maxlength="120"></label></div><label class="check"><input id="iframeFullscreen" type="checkbox">允許全螢幕</label></div>
+  <label>嵌入程式碼<textarea class="export-code" id="embedCode" readonly rows="4" placeholder="產生後可在這裡選取程式碼"></textarea></label><div class="row"><button id="copyEmbed" data-icon="copy">複製嵌入程式碼</button></div><p id="exportFeedback" class="hint" role="status"></p>
+</div></dialog>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const iconPaths = {
+  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>', minus:'<path d="M5 12h14"/>',
+  upload:'<path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"/>',
+  download:'<path d="M12 4v12m-4-4 4 4 4-4M4 15v5h16v-5"/>',
+  folder:'<path d="M3 6h7l2 3h9v11H3z"/>', save:'<path d="M4 4h13l3 3v13H4zM8 4v6h8V4M8 20v-6h8v6"/>',
+  undo:'<path d="M8 5 4 9l4 4M4 9h9a6 6 0 0 1 6 6v3"/>', redo:'<path d="m16 5 4 4-4 4m4-4h-9a6 6 0 0 0-6 6v3"/>',
+  eye:'<path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/>',
+  trash:'<path d="M4 6h16M9 6V3h6v3m3 0-1 15H7L6 6m4 4v7m4-7v7"/>',
+  up:'<path d="m6 15 6-6 6 6"/>', down:'<path d="m6 9 6 6 6-6"/>',
+  copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 5V4H4v12h1"/>',
+  cursor:'<path d="m5 3 14 10-7 1-3 6z"/>',
+  hand:'<path d="M8 13V5a1.5 1.5 0 0 1 3 0v6-8a1.5 1.5 0 0 1 3 0v8-6a1.5 1.5 0 0 1 3 0v7-4a1.5 1.5 0 0 1 3 0v6c0 5-2 7-6 7h-1c-3 0-4-1-6-4l-3-4a1.5 1.5 0 0 1 2-2l2 2z"/>'
+};
+for (const node of document.querySelectorAll("[data-icon]")) {
+  node.insertAdjacentHTML("afterbegin", '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">' + iconPaths[node.dataset.icon] + '</svg>');
+}
+
+// The same renderer runs in the editor preview, the downloaded page and each embed.
+function setMarker(button, point, index) {
+  const style = button.style;
+  const values = {
+    x: point.x + "%", y: point.y + "%", size: point.size + "px", font: Math.max(11, point.size * .38) + "px",
+    border: point.border + "px", stroke: point.stroke, fill: point.fill, fg: point.fg, opacity: point.opacity / 100,
+    shadow: point.shadow ? "0 2px 7px #11182765" : "none"
+  };
+  for (const [key, value] of Object.entries(values)) style.setProperty("--" + key, value);
+  button.dataset.pulse = String(point.animate);
+  button.setAttribute("aria-label", (index + 1) + "．" + (point.title || "未命名互動點"));
+  if (point.number || point.kind === "number") {
+    button.textContent = point.number ? index + 1 : "•";
+  } else if (point.kind === "info" || point.kind === "plus") {
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    const path = document.createElementNS(ns, "path");
+    path.setAttribute("d", point.kind === "plus" ? "M5 12h14M12 5v14" : "M12 11v7m0-12v1");
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", "currentColor");
+    path.setAttribute("stroke-width", "2.6");
+    path.setAttribute("stroke-linecap", "round");
+    svg.append(path);
+    button.replaceChildren(svg);
+  } else {
+    button.textContent = "•";
+  }
+}
+
+function renderGuide(host, project, setMarker) {
+  if (host.shadowRoot) return;
+  const root = host.attachShadow({mode:"open"});
+  const make = (tag, className, content) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (content) node.textContent = content;
+    if (tag === "button") node.type = "button";
+    return node;
+  };
+  const style = make("style");
+  style.textContent = ':host{display:block;isolation:isolate;color-scheme:light}'
+    + '.guide{all:initial;display:block;container-type:inline-size;font:16px/1.55 Outfit,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:#111827;background:white}'
+    + '*,*::before,*::after{box-sizing:border-box}[hidden]{display:none!important}'
+    + '.controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;background:#eff6ff;font-size:.88em}'
+    + 'button,a.action{font:inherit;cursor:pointer;min-height:36px;border:1px solid #c8d5e8;border-radius:8px;background:white;color:#193965;padding:5px 10px;line-height:1.2}'
+    + 'button:hover,a.action:hover{background:#dbeafe}button:disabled{opacity:.5;cursor:default}'
+    + ':focus-visible{outline:3px solid #2563eb;outline-offset:3px}'
+    + '.viewport{position:relative;padding:var(--gutter,24px);background:#f3f6fb}.figure{position:relative;margin:0}.background{display:block;width:100%;height:auto}'
+    + '.spot{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:var(--size);height:var(--size);min-height:0;display:grid;place-items:center;padding:0;border:var(--border) solid var(--stroke);border-radius:50%;background:var(--fill);color:var(--fg);box-shadow:var(--shadow);opacity:var(--opacity);font-size:var(--font);font-weight:700;line-height:1;touch-action:manipulation}'
+    + '.spot:hover,.spot[aria-expanded=true]{background:var(--fill);z-index:2}.spot svg{width:57%;height:57%}'
+    + '.spot[data-pulse=true]::after{content:"";position:absolute;inset:-3px;border:2px solid var(--fill);border-radius:50%;pointer-events:none;animation:hsPulse 2.6s ease-out infinite}'
+    + '@keyframes hsPulse{from{transform:scale(.93);opacity:.85}75%,to{transform:scale(1.55);opacity:0}}@media(prefers-reduced-motion:reduce){.spot[data-pulse=true]::after{animation:none}}'
+    + '.card{box-sizing:border-box;color:#111827;background:white;border:1px solid #dce4f0;border-radius:12px;padding:12px;box-shadow:0 8px 26px #18244334;overflow:auto;overflow-wrap:anywhere;font:inherit}'
+    + '.floating,.side{position:absolute;z-index:3;width:min(300px,calc(100% - 16px));max-height:min(340px,65dvh)}'
+    + '.side{top:8px;right:8px;max-height:calc(100% - 16px)}'
+    + '.modal{width:min(540px,calc(100% - 24px));max-height:calc(100dvh - 24px);margin:auto;position:fixed;inset:0;height:fit-content}.modal::backdrop{background:#101b3799}'
+    + '.heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.heading h2{font-size:1.08em;line-height:1.3;margin:4px 0}.close{flex:none}'
+    + '.card p{margin:6px 0 10px;white-space:pre-wrap}.sub{color:#475569}.detail-image{display:block;width:100%;max-height:290px;object-fit:contain;border-radius:8px;margin:8px 0}'
+    + '.action{display:inline-flex;align-items:center;margin:4px 0;text-decoration:none}.card .controls{border-radius:8px;margin-top:9px;padding:7px}'
+    + '.below{position:relative;inset:auto!important;width:100%;margin-top:12px;max-height:60dvh}'
+    + '@container(max-width:520px){.floating,.side{position:relative;inset:auto!important;width:100%;margin-top:12px;max-height:60dvh}}';
+  const guide = make("section", "guide");
+  guide.setAttribute("aria-label", project.name);
+  const viewport = make("div", "viewport");
+  const figure = make("figure", "figure");
+  const image = make("img", "background");
+  image.src = project.image.src;
+  image.alt = project.image.alt || "";
+  image.width = project.image.width;
+  image.height = project.image.height;
+  image.draggable = false;
+  figure.append(image);
+  const entries = project.points.map((point, index) => ({point, index})).filter(entry => !entry.point.hidden);
+  viewport.style.setProperty("--gutter",Math.max(24,...entries.map(entry => Math.ceil(entry.point.size / 2) + 5)) + "px");
+  const guided = project.tour === "guided";
+  let active = -1;
+  let opener = null;
+  let card = null;
+  let closeButton = null;
+  let touring = false;
+  let completed = false;
+  const controls = make("div", "controls");
+  const stepLabel = make("span");
+  stepLabel.setAttribute("role", "status");
+  const start = make("button", "", "開始導覽");
+  function setTourStatus() {
+    start.textContent = touring || completed ? "重新開始" : "開始導覽";
+    stepLabel.textContent = touring && active >= 0 ? '第 ' + (active + 1) + ' / ' + entries.length + ' 步'
+      : completed ? "已完成導覽" : entries.length ? entries.length + " 個導覽步驟" : "目前沒有可瀏覽的互動點";
+  }
+  function close(restore = true) {
+    if (!card) return;
+    const previous = opener;
+    if (card.tagName === "DIALOG" && card.open) card.close();
+    card.remove();
+    previous.setAttribute("aria-expanded", "false");
+    card = null;
+    opener = null;
+    closeButton = null;
+    active = -1;
+    if (restore) {
+      touring = false;
+      setTourStatus();
+      previous.focus({preventScroll:true});
+    }
+  }
+  function positionCard() {
+    if (!card || card.tagName === "DIALOG") return;
+    card.classList.toggle("below",figure.clientHeight < 185);
+    if (!card.classList.contains("floating") || getComputedStyle(card).position === "relative") return;
+    const rect = viewport.getBoundingClientRect();
+    const marker = opener.getBoundingClientRect();
+    const box = card.getBoundingClientRect();
+    const right = marker.right - rect.left + 9;
+    const left = marker.left - rect.left - box.width - 9;
+    const limit = Math.max(8, viewport.clientWidth - box.width - 8);
+    const x = right <= limit ? right : left >= 8 ? left : Math.min(limit, Math.max(8, right));
+    const preferredY = left < 8 && right > limit ? marker.bottom - rect.top + 6 : marker.top - rect.top;
+    const y = Math.max(8, Math.min(preferredY, viewport.clientHeight - box.height - 8));
+    card.style.left = x + "px";
+    card.style.top = y + "px";
+  }
+  function open(index, withTour) {
+    if (!entries[index]) return;
+    close(false);
+    active = index;
+    touring = withTour;
+    completed = false;
+    const point = entries[index].point;
+    opener = entries[index].button;
+    opener.setAttribute("aria-expanded", "true");
+    if (withTour) {
+      opener.scrollIntoView({block:"nearest",inline:"nearest"});
+      opener.focus({preventScroll:true});
+    }
+    const modal = point.panel === "modal";
+    const name = point.title || "未命名互動點";
+    card = make(modal ? "dialog" : "section", "card " + (modal ? "modal" : point.panel === "side" ? "side" : "floating"));
+    card.setAttribute("aria-label", name);
+    const heading = make("div", "heading");
+    closeButton = make("button", "close", "關閉");
+    closeButton.addEventListener("click", () => close());
+    heading.append(make("h2", "", name), closeButton);
+    card.append(heading);
+    if (point.subtitle) card.append(make("p", "sub", point.subtitle));
+    const src = point.attachment?.src || point.remote;
+    if (src && ["image","mixed"].includes(point.type)) {
+      const detail = make("img", "detail-image");
+      detail.src = src;
+      detail.alt = point.alt;
+      detail.referrerPolicy = "no-referrer";
+      detail.addEventListener("load", positionCard);
+      detail.addEventListener("error", () => {
+        detail.replaceWith(make("p", "sub", "無法載入附加圖片。"));
+        positionCard();
+      });
+      card.append(detail);
+    }
+    if (point.description) card.append(make("p", "", point.description));
+    if (point.extra) card.append(make("p", "sub", point.extra));
+    if (point.url && ["link","mixed"].includes(point.type)) {
+      const link = make("a", "action", point.linkLabel || "了解更多");
+      link.href = point.url;
+      if (point.newTab) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+      card.append(link);
+    }
+    if (withTour) {
+      const nav = make("div", "controls");
+      const prev = make("button", "", "上一步");
+      const next = make("button", "", index + 1 < entries.length ? "下一步" : "完成");
+      const end = make("button", "", "結束導覽");
+      prev.disabled = index === 0;
+      prev.addEventListener("click", () => open(index - 1, true));
+      next.addEventListener("click", () => {
+        if (index + 1 < entries.length) open(index + 1, true);
+        else {
+          completed = true;
+          close();
+          start.focus();
+        }
+      });
+      end.addEventListener("click", () => { close(); start.focus(); });
+      nav.append(make("span", "", '第 ' + (index + 1) + ' / ' + entries.length + ' 步'), prev, next, end);
+      card.append(nav);
+    }
+    viewport.append(card);
+    if (modal) {
+      card.addEventListener("cancel", event => { event.preventDefault(); close(); });
+      card.showModal();
+    } else {
+      positionCard();
+    }
+    closeButton.focus({preventScroll:true});
+    if (!modal && getComputedStyle(card).position === "relative") card.scrollIntoView({block:"nearest",inline:"nearest"});
+    setTourStatus();
+  }
+  entries.forEach((entry, index) => {
+    const button = make("button", "spot");
+    setMarker(button, entry.point, entry.index);
+    button.setAttribute("aria-expanded", "false");
+    if (entry.point.panel === "modal") button.setAttribute("aria-haspopup", "dialog");
+    button.addEventListener("click", () => active === index ? close() : open(index, touring));
+    entry.button = button;
+    figure.append(button);
+  });
+  if (guided) {
+    start.disabled = !entries.length;
+    start.addEventListener("click", () => open(0, true));
+    setTourStatus();
+    controls.append(start, stepLabel);
+    guide.append(controls);
+  }
+  root.addEventListener("keydown", event => {
+    if (event.key === "Escape" && card) {
+      event.stopPropagation();
+      event.preventDefault();
+      close();
+    }
+  });
+  guide.addEventListener("click", event => {
+    if (event.target === image || event.target === viewport) close();
+  });
+  image.addEventListener("load", positionCard);
+  const observer = new ResizeObserver(positionCard);
+  observer.observe(viewport);
+  viewport.append(figure);
+  guide.append(viewport);
+  root.append(style, guide);
+  return () => { observer.disconnect(); close(false); };
+}
+
+const FORMAT = "wumetax-hotspot-studio";
+const MAX_IMAGE_BYTES = 40 * 1024 ** 2;
+const MAX_PROJECT_BYTES = 180 * 1024 ** 2;
+const MAX_EMBEDDED_DATA = 150 * 1024 ** 2;
+const MAX_IMAGE_PIXELS = 64_000_000;
+const styles = {kind:"number", panel:"popover", size:38, border:2, fill:"#2563eb", fg:"#ffffff", stroke:"#ffffff", opacity:100, shadow:true, number:true, animate:false};
+const fields = ["type","title","subtitle","description","extra","remote","alt","url","linkLabel","newTab",...Object.keys(styles),"x","y"];
+const types = {mixed:"複合內容",text:"文字資訊",image:"圖片介紹",link:"外部連結"};
+const id = () => globalThis.crypto?.randomUUID?.() || "hs-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2);
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+const position = n => Math.round(clamp(n, 0, 100) * 100) / 100;
+const textValue = (value, max) => typeof value === "string" ? value.slice(0, max) : "";
+const fromOptions = (value, options, fallback) => options.includes(value) ? value : fallback;
+const bounded = (value, min, max, fallback) => typeof value === "number" && Number.isFinite(value) ? clamp(value, min, max) : fallback;
+const color = (value, fallback) => typeof value === "string" && /^#[\da-f]{6}$/i.test(value) ? value : fallback;
+const safeUrl = (value, httpsOnly = false) => {
+  if (typeof value !== "string" || value.length > 2048 || !/^https?:\/\//i.test(value.trim())) return "";
+  try {
+    const url = new URL(value.trim());
+    if (url.username || url.password) return "";
+    return url.protocol === "https:" || (!httpsOnly && url.protocol === "http:") ? url.href : "";
+  } catch {
+    return "";
+  }
+};
+const bytes = count => count >= 1024 ** 2 ? (count / 1024 ** 2).toFixed(2) + " MB" : count >= 1024 ? (count / 1024).toFixed(1) + " KB" : count + " B";
+function node(tag, className, value) {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  if (value !== undefined) el.textContent = value;
+  if (tag === "button") el.type = "button";
+  return el;
+}
+function blankProject(name = "未命名專案") {
+  return {format:FORMAT,version:1,id:id(),name,image:null,points:[],tour:"free",
+    settings:{device:"1440",deviceWidth:480,context:"image",embedMode:"inline",iframeUrl:"",iframeHeight:600,iframeTitle:"",iframeFullscreen:false},updated:0};
+}
+function makePoint(x, y, title = "新互動點") {
+  return {id:id(),x,y,title,subtitle:"",description:"",extra:"",type:"mixed",attachment:null,remote:"",alt:"",url:"",linkLabel:"",newTab:true,hidden:false,...styles};
+}
+function markerStyle(raw) {
+  return {
+    kind:fromOptions(raw.kind,["number","dot","plus","info","pulse"],styles.kind),
+    panel:fromOptions(raw.panel,["popover","side","modal"],styles.panel),
+    size:bounded(raw.size,24,84,styles.size), border:bounded(raw.border,0,8,styles.border),
+    fill:color(raw.fill,styles.fill), fg:color(raw.fg,styles.fg), stroke:color(raw.stroke,styles.stroke),
+    opacity:bounded(raw.opacity,20,100,styles.opacity), shadow:raw.shadow !== false, number:raw.number !== false, animate:raw.animate === true
+  };
+}
+
+function imageFormat(data) {
+  if (data[0] === 255 && data[1] === 216 && data[2] === 255) return "image/jpeg";
+  if ([137,80,78,71,13,10,26,10].every((byte,index) => data[index] === byte)) return "image/png";
+  if ([82,73,70,70].every((byte,index) => data[index] === byte) && [87,69,66,80].every((byte,index) => data[index + 8] === byte)) return "image/webp";
+  return "";
+}
+function dataImage(src) {
+  if (typeof src !== "string" || src.length > MAX_IMAGE_BYTES * 4 / 3 + 100) return null;
+  const match = /^data:(image\/(?:png|jpeg|webp));base64,/.exec(src);
+  if (!match || !/^[A-Za-z0-9+/]*={0,2}$/.test(src.slice(match[0].length))) return null;
+  const encoded = src.length - match[0].length;
+  if (encoded < 16 || encoded % 4) return null;
+  const header = atob(src.slice(match[0].length, match[0].length + 16));
+  if (imageFormat(Array.from(header, char => char.charCodeAt(0))) !== match[1]) return null;
+  return {type:match[1],size:encoded / 4 * 3 - (src.endsWith("==") ? 2 : src.endsWith("=") ? 1 : 0)};
+}
+function decode(src) {
+  const image = new Image();
+  image.src = src;
+  return image.decode().then(() => {
+    if (!image.naturalWidth || !image.naturalHeight || image.naturalWidth * image.naturalHeight > MAX_IMAGE_PIXELS) {
+      throw new Error("圖片解析度過大，請先縮小再試。");
+    }
+    return image;
+  }, () => { throw new Error("無法解碼圖片，請確認檔案完整。"); });
+}
+async function readImage(file, name = file.name) {
+  if (!file.size) throw new Error("圖片檔案是空的。");
+  if (file.size > MAX_IMAGE_BYTES) throw new Error("圖片超過 40 MB，請先縮小或壓縮。");
+  const type = imageFormat(new Uint8Array(await file.slice(0, 12).arrayBuffer()));
+  if (!type) throw new Error("請選擇有效的 JPG、PNG 或 WebP 圖片。");
+  const src = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("無法讀取圖片。"));
+    reader.onload = () => resolve(reader.result);
+    reader.readAsDataURL(file.type === type ? file : new Blob([file], {type}));
+  });
+  const image = await decode(src);
+  return {src,name:textValue(name,250),type,size:file.size,width:image.naturalWidth,height:image.naturalHeight,
+    originalWidth:image.naturalWidth,originalHeight:image.naturalHeight,alt:""};
+}
+async function cleanImage(raw, verify, decodedImages) {
+  if (!raw || typeof raw !== "object") throw new Error("備份缺少內嵌圖片。");
+  const data = dataImage(raw.src);
+  if (!data) throw new Error("備份包含不支援或不完整的內嵌圖片。");
+  let width = bounded(raw.width,1,MAX_IMAGE_PIXELS,0), height = bounded(raw.height,1,MAX_IMAGE_PIXELS,0);
+  if (verify) {
+    if (!decodedImages.has(raw.src)) {
+      const image = await decode(raw.src);
+      decodedImages.set(raw.src, [image.naturalWidth,image.naturalHeight]);
+    }
+    [width,height] = decodedImages.get(raw.src);
+  }
+  if (!width || !height || width * height > MAX_IMAGE_PIXELS) throw new Error("備份圖片的尺寸不合法。");
+  return {...data,src:raw.src,name:textValue(raw.name,250),width,height,
+    originalWidth:bounded(raw.originalWidth,1,MAX_IMAGE_PIXELS,width),originalHeight:bounded(raw.originalHeight,1,MAX_IMAGE_PIXELS,height),alt:textValue(raw.alt,250)};
+}
+async function cleanProject(raw, verify = true) {
+  if (!raw || raw.format !== FORMAT || raw.version !== 1 || !Array.isArray(raw.points) || raw.points.length > 500) {
+    throw new Error("不支援這份專案格式或版本，或互動點超過 500 個。");
+  }
+  const project = blankProject(textValue(raw.name,120).trim() || "未命名專案");
+  const decodedImages = new Map();
+  if (raw.image != null) project.image = await cleanImage(raw.image, verify, decodedImages);
+  if (!project.image && raw.points.length) throw new Error("備份有互動點但缺少背景圖片。");
+  for (const point of raw.points) {
+    if (!point || typeof point !== "object" || Array.isArray(point)) throw new Error("備份包含格式錯誤的互動點。");
+    const clean = makePoint(position(bounded(point.x,0,100,50)), position(bounded(point.y,0,100,50)), textValue(point.title,120));
+    Object.assign(clean, markerStyle(point), {
+      type:fromOptions(point.type,Object.keys(types),"mixed"), subtitle:textValue(point.subtitle,200),
+      description:textValue(point.description,5000), extra:textValue(point.extra,3000), alt:textValue(point.alt,250),
+      remote:safeUrl(point.remote,true), url:safeUrl(point.url), linkLabel:textValue(point.linkLabel,100),
+      newTab:point.newTab !== false, hidden:point.hidden === true
+    });
+    if (point.attachment != null) clean.attachment = await cleanImage(point.attachment, verify, decodedImages);
+    project.points.push(clean);
+  }
+  project.tour = raw.tour === "guided" ? "guided" : "free";
+  const settings = raw.settings || {};
+  Object.assign(project.settings, {
+    device:fromOptions(settings.device,["1440","768","390","360","custom"],"1440"),
+    deviceWidth:bounded(settings.deviceWidth,280,2400,480),
+    context:fromOptions(settings.context,["image","article","product"],"image"),
+    embedMode:settings.embedMode === "iframe" ? "iframe" : "inline",
+    iframeUrl:safeUrl(settings.iframeUrl,true), iframeHeight:bounded(settings.iframeHeight,160,3000,600),
+    iframeTitle:textValue(settings.iframeTitle,120), iframeFullscreen:settings.iframeFullscreen === true
+  });
+  return project;
+}
+
+const demoArt = {
+  room:{
+    title:"室內空間導覽", alt:"有大型窗戶、沙發、茶几、落地燈和層架的客廳示意圖",
+    art:'<path fill="#f1e9de" d="M0 0h1200v472H0z"/><path fill="#ceb49b" d="M0 472h1200v248H0z"/><path stroke="#b79c82" stroke-width="3" d="M0 538h1200M0 616h1200M264 472 93 720m463-248-44 248m314-248 76 248m152-248 138 190"/>'
+      + '<rect x="84" y="64" width="420" height="316" rx="7" fill="#fffaf0"/><rect x="101" y="81" width="386" height="282" fill="#bcdeee"/><path fill="#a1b9a9" d="M101 300l114-75 69 50 111-66 92 71v83H101z"/><path fill="#7ea792" d="m101 324 118-48 115 48 153-62v101H101z"/><path stroke="#fffaf0" stroke-width="10" d="M295 81v282M101 218h386"/><rect x="69" y="374" width="450" height="14" rx="5" fill="#b99f84"/>'
+      + '<ellipse cx="603" cy="584" rx="377" ry="83" fill="#efe0ca"/><rect x="371" y="327" width="405" height="172" rx="48" fill="#698478"/><rect x="399" y="345" width="168" height="113" rx="20" fill="#a7b8a1"/><rect x="581" y="345" width="168" height="113" rx="20" fill="#9fb49f"/><rect x="342" y="417" width="463" height="100" rx="24" fill="#7a9588"/><path stroke="#58493d" stroke-width="14" d="M385 512v24m373-24v24"/><rect x="421" y="389" width="66" height="61" rx="9" fill="#d49a71" transform="rotate(-12 421 389)"/><rect x="653" y="397" width="63" height="57" rx="11" fill="#e8d4ac" transform="rotate(10 653 397)"/>'
+      + '<path stroke="#46514a" stroke-width="7" d="M830 205v296m-30 0h60"/><path fill="#d9ab62" d="M798 154h64l23 84H775z"/><rect x="957" y="110" width="176" height="373" rx="8" fill="#937761"/><path fill="#f4ddc1" d="M975 128h140v96H975zm0 114h140v99H975zm0 118h140v104H975z"/><path fill="#80968a" d="M990 165h19v59h-19zm25 13h15v46h-15zm19-23h20v69h-20zm44 225h21v84h-21z"/><rect x="995" y="280" width="90" height="52" rx="8" fill="#c69269"/>'
+      + '<path stroke="#6b4b38" stroke-width="12" d="m527 580-13 47m157-47 12 47"/><ellipse cx="600" cy="573" rx="115" ry="30" fill="#a77b59"/><ellipse cx="600" cy="566" rx="115" ry="26" fill="#c29a72"/><ellipse cx="596" cy="561" rx="26" ry="8" fill="#f6e9d2"/><rect x="578" y="537" width="27" height="23" rx="7" fill="#f6e9d2"/>',
+    points:[[48,57,"客廳沙發","柔和的苔綠布面與寬坐深，讓沙發成為客廳的休憩中心。"],[24,29,"採光窗","大片窗戶引入自然光，讓午後的客廳保持明亮。"],[50,79,"客廳茶几","圓弧桌面留出走動空間，也能擺放日常書籍與茶具。"],[87,38,"收納層架","開放式層架展示書籍與擺件，下層可放收納盒。"],[69,27,"落地照明","溫暖的定向光適合傍晚閱讀，也補足沙發旁的照明。"]]
+  },
+  product:{
+    title:"商品功能介紹",alt:"具有顯示面板、控制旋鈕和接口的桌上型設備示意圖",
+    art:'<rect width="1200" height="720" fill="#e4edf8"/><circle cx="960" cy="137" r="158" fill="#cfddf1"/><circle cx="140" cy="640" r="245" fill="#d2e2f6"/><ellipse cx="620" cy="560" rx="401" ry="62" fill="#bfcee5"/><path fill="#91a6bf" d="m340 217 105-78h423l114 77-70 274-87 60z"/><path fill="#aabdd6" d="m340 217 105-78h423l114 77z"/><path fill="#5d7591" d="m900 217 82-1-70 274-87 60z"/><rect x="270" y="213" width="630" height="339" rx="44" fill="#263b53"/><rect x="290" y="232" width="590" height="300" rx="29" fill="#405975"/><rect x="337" y="274" width="321" height="152" rx="20" fill="#142539"/><path d="M364 370h42l24-40 44 60 38-35h114" stroke="#6ee7d7" stroke-width="7" fill="none"/><circle cx="774" cy="350" r="63" fill="#718aa6"/><circle cx="774" cy="350" r="49" fill="#c0cfe0"/><path d="m774 315 13 21" stroke="#375372" stroke-width="6"/><rect x="704" y="458" width="115" height="27" rx="9" fill="#15283e"/><circle cx="349" cy="472" r="8" fill="#82ebd9"/><path d="M380 472h177" stroke="#8198b4" stroke-width="5"/>',
+    points:[[42,48,"顯示面板","即時檢視設備運轉與訊號狀態。"],[65,48,"控制旋鈕","旋轉選擇設定，按下即可確認。"],[63,66,"電源接口","使用符合規格的電源供應器。"],[73,25,"外觀材質","霧面機身減少反光，圓角設計方便清潔。"]]
+  },
+  website:{
+    title:"網站操作教學",alt:"含主選單、搜尋框、登入入口與聯絡按鈕的原創網站介面",
+    art:'<rect width="1200" height="720" fill="#e7eafa"/><rect x="110" y="76" width="980" height="561" rx="24" fill="#fdfdff"/><path d="M110 100q0-24 24-24h932q24 0 24 24v49H110z" fill="#29375b"/><circle cx="149" cy="114" r="7" fill="#f6b6b4"/><circle cx="173" cy="114" r="7" fill="#f2d4a0"/><circle cx="197" cy="114" r="7" fill="#abe4c7"/><rect x="362" y="100" width="477" height="27" rx="10" fill="#435477"/><rect x="147" y="172" width="905" height="75" rx="11" fill="#edf1fd"/><path stroke="#3c5289" stroke-width="7" stroke-linecap="round" d="M185 197h35m-35 11h35m-35 11h35"/><rect x="374" y="189" width="357" height="41" rx="20" fill="#fff" stroke="#bccaea"/><circle cx="404" cy="207" r="8" fill="none" stroke="#6579aa" stroke-width="3"/><path stroke="#6579aa" stroke-width="3" d="m410 213 8 8"/><circle cx="988" cy="208" r="20" fill="#b9c8ef"/><circle cx="988" cy="202" r="5" fill="#475e98"/><path d="M979 217q9-15 18 0" fill="#475e98"/><rect x="148" y="273" width="904" height="200" rx="14" fill="#dce8fc"/><path d="M760 473q130-186 292-114v100q0 14-14 14Z" fill="#c2d5f5"/><path stroke="#4e669b" stroke-width="14" stroke-linecap="round" d="M199 336h276"/><path stroke="#8da3ce" stroke-width="8" stroke-linecap="round" d="M199 366h329m-329 20h243"/><rect x="198" y="407" width="153" height="41" rx="9" fill="#395eae"/><path stroke="#fff" stroke-width="5" stroke-linecap="round" d="M228 428h91"/><g fill="#edf1fd"><rect x="148" y="500" width="282" height="96" rx="10"/><rect x="458" y="500" width="282" height="96" rx="10"/><rect x="768" y="500" width="284" height="96" rx="10"/></g>',
+    points:[[17,29,"主選單","展開主選單可切換網站的主要頁面。"],[46,29,"搜尋","輸入關鍵字即可查找網站內容。"],[82,29,"會員入口","點擊帳號圖示可前往登入與帳號設定。"],[23,59,"聯絡按鈕","透過聯絡表單傳送問題或合作需求。"]]
+  }
+};
+function canvasBlob(canvas, format, quality) {
+  return new Promise((resolve,reject) => canvas.toBlob(blob => blob && blob.type === format ? resolve(blob) : reject(new Error("瀏覽器無法使用這個圖片格式輸出。")),format,quality));
+}
+async function makeDemo(key) {
+  const demo = demoArt[key];
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">' + demo.art + '</svg>';
+  const image = await decode("data:image/svg+xml," + encodeURIComponent(svg));
+  const canvas = document.createElement("canvas");
+  canvas.width = image.naturalWidth;
+  canvas.height = image.naturalHeight;
+  canvas.getContext("2d").drawImage(image,0,0);
+  const project = blankProject(demo.title);
+  project.image = await readImage(await canvasBlob(canvas,"image/png"),demo.title + ".png");
+  project.image.alt = demo.alt;
+  project.points = demo.points.map(([x,y,title,description]) => ({...makePoint(x,y,title),description,type:"text"}));
+  return project;
+}
+
+let project = blankProject();
+let selected = null;
+let past = [], future = [];
+let tool = "select", view = "fit", zoom = 1, fit = 1;
+let interaction = null;
+let fieldEdit = null;
+let mountedPreview = null;
+let compressed = null;
+let storageTimer = 0;
+let storageError = false;
+let dirty = false;
+let busy = false;
+const canvas = $("canvas"), frame = $("frame"), image = $("mainImage"), form = $("pointForm");
+const pointList = $("pointList"), markers = $("markers");
+const current = () => project.points.find(point => point.id === selected);
+function hasImageBudget(added, removed = 0) {
+  const used = (project.image?.src.length || 0) + project.points.reduce((sum,point) => sum + (point.attachment?.src.length || 0),0);
+  if (used + added - removed <= MAX_EMBEDDED_DATA) return true;
+  status("專案內嵌圖片總量過大。請縮小圖片或移除部分附圖後再試。",true);
+  return false;
+}
+const controls = (...ids) => ids.map($);
+const status = (value, error = false) => {
+  $("status").textContent = value;
+  $("status").classList.toggle("error",error);
+};
+function showPanel(panel) {
+  $("workspace").dataset.panel = panel;
+  $("showPoints").setAttribute("aria-pressed",String(panel === "points"));
+  $("showContent").setAttribute("aria-pressed",String(panel === "content"));
+}
+function setTool(next) {
+  tool = project.image ? next : "select";
+  canvas.dataset.tool = tool;
+  $("selectTool").setAttribute("aria-pressed",String(tool === "select"));
+  $("panTool").setAttribute("aria-pressed",String(tool === "pan"));
+  $("addPoint").setAttribute("aria-pressed",String(tool === "add"));
+  if (tool === "add") status("點擊圖片放置互動點。也可按 Alt + Enter 在圖片中央新增。");
+}
+function layout() {
+  if (!project.image) {
+    $("viewInfo").textContent = "";
+    return;
+  }
+  const {width,height} = project.image;
+  const boardStyle = getComputedStyle($("board"));
+  const padX = parseFloat(boardStyle.paddingLeft) + parseFloat(boardStyle.paddingRight);
+  const padY = parseFloat(boardStyle.paddingTop) + parseFloat(boardStyle.paddingBottom);
+  fit = Math.min(Math.max(1,canvas.clientWidth - padX - 12) / width,Math.max(1,canvas.clientHeight - padY - 12) / height,1);
+  const scale = view === "fit" ? fit : view === "actual" ? 1 : zoom;
+  frame.style.width = width * scale + "px";
+  frame.style.height = height * scale + "px";
+  $("viewInfo").textContent = Math.round(scale * 1000) / 10 + "% · " + Math.round(width * scale) + " × " + Math.round(height * scale);
+}
+new ResizeObserver(layout).observe(canvas);
+function zoomBy(multiplier) {
+  const rect = frame.getBoundingClientRect(), bounds = canvas.getBoundingClientRect();
+  const fx = (bounds.left + canvas.clientWidth / 2 - rect.left) / rect.width;
+  const fy = (bounds.top + canvas.clientHeight / 2 - rect.top) / rect.height;
+  zoom = clamp((view === "fit" ? fit : view === "actual" ? 1 : zoom) * multiplier,Math.min(fit,.025),Math.max(fit * 5,2));
+  view = "custom";
+  layout();
+  const next = frame.getBoundingClientRect();
+  canvas.scrollLeft += next.left + next.width * fx - bounds.left - canvas.clientWidth / 2;
+  canvas.scrollTop += next.top + next.height * fy - bounds.top - canvas.clientHeight / 2;
+}
+function resetView(mode = "fit") {
+  view = mode;
+  layout();
+  if (mode === "actual") {
+    canvas.scrollLeft = Math.max(0,(canvas.scrollWidth - canvas.clientWidth) / 2);
+    canvas.scrollTop = Math.max(0,(canvas.scrollHeight - canvas.clientHeight) / 2);
+  } else {
+    canvas.scrollLeft = 0;
+    canvas.scrollTop = 0;
+  }
+}
+function attachmentUI(point) {
+  const src = point.attachment?.src || point.remote;
+  $("attachmentInfo").textContent = point.attachment ? "本機 · " + point.attachment.name + " · " + bytes(point.attachment.size) : src ? "遠端 HTTPS 圖片" : "尚未加入附圖";
+  $("attachmentPreview").hidden = !src;
+  if (src && $("attachmentPreview").getAttribute("src") !== src) $("attachmentPreview").src = src;
+  if (!src) $("attachmentPreview").removeAttribute("src");
+  $("attachmentPreview").alt = point.alt;
+  $("removeAttachment").disabled = !src;
+}
+function pointFormUI() {
+  const point = current();
+  form.hidden = !point;
+  $("noPoint").hidden = !!point;
+  $("selectedBadge").textContent = point ? "第 " + (project.points.indexOf(point) + 1) + " 點" : "尚未選取";
+  if (!point) return;
+  for (const key of fields) {
+    const input = form.elements.namedItem(key);
+    if (input.type === "checkbox") input.checked = point[key];
+    else input.value = point[key];
+    input.setCustomValidity("");
+  }
+  formType(point);
+  attachmentUI(point);
+}
+function formType(point) {
+  $("pointImageFields").hidden = !["image","mixed"].includes(point.type);
+  $("pointLinkFields").hidden = !["link","mixed"].includes(point.type);
+}
+function renderMarkers() {
+  const available = new Map(Array.from(markers.children, button => [button.dataset.id,button]));
+  for (const [index,point] of project.points.entries()) {
+    let button = available.get(point.id);
+    if (!button) {
+      button = node("button","editor-marker");
+      button.dataset.id = point.id;
+      markers.append(button);
+    }
+    available.delete(point.id);
+    setMarker(button,point,index);
+    button.dataset.hidden = String(point.hidden);
+    button.setAttribute("aria-pressed",String(point.id === selected));
+    if (markers.children[index] !== button) markers.insertBefore(button,markers.children[index]);
+  }
+  for (const button of available.values()) button.remove();
+}
+function renderList() {
+  const focusId = pointList.contains(document.activeElement) ? document.activeElement.dataset.id : null;
+  pointList.replaceChildren();
+  const selectedIndex = project.points.findIndex(point => point.id === selected);
+  for (const [index,point] of project.points.entries()) {
+    const item = node("li");
+    const button = node("button");
+    button.dataset.id = point.id;
+    button.setAttribute("aria-pressed",String(point.id === selected));
+    const body = node("span");
+    body.append(node("strong","",point.title || "未命名互動點"),node("small","",types[point.type] + (point.hidden ? " · 已隱藏" : " · 顯示中")));
+    button.append(node("span","num",String(index + 1)),body);
+    item.append(button);
+    pointList.append(item);
+    if (point.id === focusId) button.focus({preventScroll:true});
+  }
+  $("listActions").hidden = selectedIndex < 0;
+  $("upPoint").disabled = selectedIndex <= 0;
+  $("downPoint").disabled = selectedIndex < 0 || selectedIndex >= project.points.length - 1;
+  const label = current()?.hidden ? "顯示互動點" : "隱藏互動點";
+  $("togglePoint").setAttribute("aria-label",label);
+  $("togglePoint").title = label;
+  $("togglePoint").setAttribute("aria-pressed",String(Boolean(current()?.hidden)));
+  $("pointCount").textContent = project.points.length;
+  $("listHint").textContent = !project.image ? "上傳圖片後，即可在畫面上標記位置。" : project.points.length > 100 ? "互動點超過 100 個，較慢的裝置可能受影響。" : "從上到下為導覽順序，可用箭頭重新排序。";
+}
+function historyUI() {
+  $("undo").disabled = !past.length;
+  $("redo").disabled = !future.length;
+}
+function render() {
+  const bg = project.image;
+  $("projectName").value = project.name;
+  $("empty").hidden = !!bg;
+  $("board").hidden = !bg;
+  $("compressImage").hidden = !bg;
+  $("clearImage").disabled = !bg;
+  $("backgroundAlt").hidden = !bg;
+  $("imageAlt").value = bg?.alt || "";
+  $("uploadImage").lastChild.textContent = bg ? "更換圖片" : "上傳圖片";
+  $("imageInfo").textContent = bg ? bg.name + " · " + bg.originalWidth + " × " + bg.originalHeight + " 原始像素 · " + bytes(bg.size) + " · " + bg.type.split("/")[1].toUpperCase() + (bg.originalWidth !== bg.width || bg.originalHeight !== bg.height ? " · 已調整為 " + bg.width + " × " + bg.height : "") : "支援 JPG、PNG、WebP";
+  if (bg && image.getAttribute("src") !== bg.src) image.src = bg.src;
+  if (!bg) image.removeAttribute("src");
+  image.alt = bg?.alt || "";
+  $("tourMode").value = project.tour;
+  for (const button of controls("addPoint","panTool","zoomIn","zoomOut","fitView","actualView","preview")) button.disabled = !bg;
+  if (!bg) setTool("select");
+  renderMarkers();
+  renderList();
+  pointFormUI();
+  historyUI();
+  layout();
+}
+function choosePoint(pointId, {locate = false, content = false} = {}) {
+  fieldEdit = null;
+  selected = pointId;
+  renderMarkers();
+  renderList();
+  pointFormUI();
+  if (content) showPanel("content");
+  if (locate) {
+    const button = Array.from(markers.children).find(item => item.dataset.id === pointId);
+    if (button) {
+      const rect = button.getBoundingClientRect(), bounds = canvas.getBoundingClientRect();
+      if (rect.left < bounds.left || rect.right > bounds.right) canvas.scrollLeft += (rect.left + rect.right - bounds.left - bounds.right) / 2;
+      if (rect.top < bounds.top || rect.bottom > bounds.bottom) canvas.scrollTop += (rect.top + rect.bottom - bounds.top - bounds.bottom) / 2;
+      button.focus({preventScroll:true});
+    }
+  }
+}
+function snapshot() {
+  return {project:structuredClone(project),selected};
+}
+function record(before) {
+  past.push(before);
+  if (past.length > 45) past.shift();
+  future = [];
+  historyUI();
+}
+function edit(change, message) {
+  fieldEdit = null;
+  const before = snapshot();
+  change();
+  record(before);
+  render();
+  markDirty();
+  if (message) status(message);
+}
+function undoRedo(redo) {
+  const stack = redo ? future : past;
+  if (!stack.length || interaction) return;
+  fieldEdit = null;
+  (redo ? past : future).push(snapshot());
+  const before = stack.pop();
+  const changedImage = project.image?.src !== before.project.image?.src;
+  project = before.project;
+  selected = before.selected;
+  render();
+  if (changedImage) resetView();
+  markDirty();
+  status(redo ? "已重做。" : "已復原。");
+}
+function handleField(input, assign, next) {
+  if (!fieldEdit || fieldEdit.input !== input) {
+    record(snapshot());
+    fieldEdit = {input};
+  }
+  assign(next);
+  markDirty();
+}
+function updatePointField(event) {
+  const input = event.target;
+  const key = input.name;
+  const point = current();
+  if (!point || !fields.includes(key)) return;
+  let next = input.type === "checkbox" ? input.checked : input.value;
+  if (input.type === "number") {
+    if (!next || !Number.isFinite(input.valueAsNumber)) return;
+    next = bounded(input.valueAsNumber,Number(input.min),Number(input.max),point[key]);
+    if (key === "x" || key === "y") next = position(next);
+  }
+  if (key === "remote" || key === "url") {
+    next = safeUrl(input.value,key === "remote");
+    input.setCustomValidity(!next && input.value.trim() ? (key === "remote" ? "請輸入有效的 HTTPS 圖片網址。" : "請輸入有效的 HTTP 或 HTTPS 網址。") : "");
+    if (input.validationMessage && event.type === "change") input.reportValidity();
+    if (event.type === "input" && input.value) return;
+  }
+  if (point[key] !== next) {
+    handleField(input,value => {
+      point[key] = value;
+      if (key === "remote" && value) point.attachment = null;
+      if (key === "kind") {
+        point.number = value === "number";
+        point.animate = value === "pulse";
+        form.elements.number.checked = point.number;
+        form.elements.animate.checked = point.animate;
+      }
+    },next);
+    renderMarkers();
+    if (key === "title" || key === "type") renderList();
+    formType(point);
+    if (key === "remote" || key === "alt") attachmentUI(point);
+  }
+  if (event.type === "change") {
+    if (input.type === "number" || (["remote","url"].includes(key) && !input.validationMessage)) input.value = point[key];
+    fieldEdit = null;
+  }
+}
+form.addEventListener("submit",event => event.preventDefault());
+form.addEventListener("input",updatePointField);
+form.addEventListener("change",updatePointField);
+form.addEventListener("focusout",event => {
+  if (fieldEdit?.input === event.target) fieldEdit = null;
+  if (event.target.type === "number" && current() && !event.target.value) event.target.value = current()[event.target.name];
+});
+function addPoint(x,y) {
+  if (!project.image || project.points.length >= 500) {
+    status("每個專案最多可建立 500 個互動點。",true);
+    return;
+  }
+  const point = makePoint(x,y,"互動點 " + (project.points.length + 1));
+  edit(() => { project.points.push(point); selected = point.id; },"已新增互動點，可在設定面板填寫內容。");
+  showPanel("content");
+  if (matchMedia("(max-width:850px)").matches) $("rightPanel").scrollIntoView({block:"nearest"});
+}
+function coordinates(x,y) {
+  const rect = image.getBoundingClientRect();
+  return [position((x - rect.left) / rect.width * 100),position((y - rect.top) / rect.height * 100)];
+}
+function movePoint(point,x,y,button) {
+  point.x = x;
+  point.y = y;
+  button.style.setProperty("--x",x + "%");
+  button.style.setProperty("--y",y + "%");
+  form.elements.x.value = x;
+  form.elements.y.value = y;
+}
+image.addEventListener("click",event => {
+  if (tool === "add") addPoint(...coordinates(event.clientX,event.clientY));
+  else if (tool === "select") choosePoint(null);
+});
+markers.addEventListener("click",event => {
+  const button = event.target.closest("button[data-id]");
+  if (!button || tool === "pan") return;
+  if (current()?.id !== button.dataset.id) choosePoint(button.dataset.id,{content:true});
+  else showPanel("content");
+});
+pointList.addEventListener("click",event => {
+  const button = event.target.closest("button[data-id]");
+  if (button) choosePoint(button.dataset.id,{locate:true,content:true});
+});
+canvas.addEventListener("pointerdown",event => {
+  if (interaction || !event.isPrimary || event.button !== 0 || !project.image) return;
+  const button = event.target.closest(".editor-marker");
+  if (tool === "pan" && (event.target === canvas || $("board").contains(event.target))) {
+    interaction = {kind:"pan",target:canvas,id:event.pointerId,x:event.clientX,y:event.clientY,left:canvas.scrollLeft,top:canvas.scrollTop};
+    canvas.classList.add("dragging");
+    canvas.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  } else if (button) {
+    const point = project.points.find(item => item.id === button.dataset.id);
+    if (!point) return;
+    choosePoint(point.id,{content:true});
+    button.focus({preventScroll:true});
+    const rect = image.getBoundingClientRect();
+    const offsetX = event.clientX - (rect.left + point.x * rect.width / 100);
+    const offsetY = event.clientY - (rect.top + point.y * rect.height / 100);
+    interaction = {kind:"point",target:button,point,id:event.pointerId,x:event.clientX,y:event.clientY,offsetX,offsetY,before:null};
+    button.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  }
+});
+canvas.addEventListener("pointermove",event => {
+  if (!interaction || interaction.id !== event.pointerId) return;
+  const drag = interaction;
+  const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
+  if (drag.kind === "pan") {
+    canvas.scrollLeft = drag.left - dx;
+    canvas.scrollTop = drag.top - dy;
+  } else if (drag.before || Math.hypot(dx,dy) >= 3) {
+    if (!drag.before) drag.before = snapshot();
+    movePoint(drag.point,...coordinates(event.clientX - drag.offsetX,event.clientY - drag.offsetY),drag.target);
+  }
+});
+function finishPointer(event) {
+  if (!interaction || interaction.id !== event.pointerId) return;
+  const drag = interaction;
+  interaction = null;
+  canvas.classList.remove("dragging");
+  if (drag.kind === "point" && drag.before) {
+    const previous = drag.before.project.points.find(point => point.id === drag.point.id);
+    if (event.type === "pointercancel") movePoint(drag.point,previous.x,previous.y,drag.target);
+    else if (previous.x !== drag.point.x || previous.y !== drag.point.y) {
+      record(drag.before);
+      markDirty();
+      status("已移動互動點。");
+    }
+  }
+}
+for (const event of ["pointerup","pointercancel","lostpointercapture"]) canvas.addEventListener(event,finishPointer);
+function shiftOrder(delta) {
+  const index = project.points.findIndex(point => point.id === selected);
+  const next = index + delta;
+  if (index < 0 || next < 0 || next >= project.points.length) return;
+  edit(() => {
+    [project.points[index],project.points[next]] = [project.points[next],project.points[index]];
+  },"已更新導覽順序。");
+}
+function removePoint() {
+  if (!current()) return;
+  edit(() => {
+    const index = project.points.findIndex(point => point.id === selected);
+    project.points.splice(index,1);
+    selected = project.points[index]?.id || project.points[index - 1]?.id || null;
+  },"已刪除互動點。");
+}
+function copyPoint() {
+  const point = current();
+  if (!point) return;
+  if (project.points.length >= 500) { status("每個專案最多可建立 500 個互動點。",true); return; }
+  if (point.attachment && !hasImageBudget(point.attachment.src.length)) return;
+  edit(() => {
+    const duplicate = {...structuredClone(point),id:id(),title:(point.title.slice(0,115) + "（副本）"),x:position(point.x > 94 ? point.x - 3 : point.x + 3),y:position(point.y > 94 ? point.y - 3 : point.y + 3)};
+    project.points.splice(project.points.indexOf(point) + 1,0,duplicate);
+    selected = duplicate.id;
+  },"已複製互動點。");
+}
+
+let databasePromise;
+let database;
+const lastProjectKey = FORMAT + ".last";
+function storeLast(projectId) {
+  try {
+    if (projectId) localStorage.setItem(lastProjectKey,projectId);
+    else localStorage.removeItem(lastProjectKey);
+  } catch {
+    // Project data lives in IndexedDB even when local preferences are unavailable.
+  }
+}
+function openDatabase() {
+  if (databasePromise) return databasePromise;
+  databasePromise = new Promise((resolve,reject) => {
+    const request = indexedDB.open(FORMAT,1);
+    request.onupgradeneeded = () => request.result.createObjectStore("projects",{keyPath:"id"});
+    request.onsuccess = () => {
+      database = request.result;
+      database.onversionchange = () => {
+        database.close();
+        database = null;
+        databasePromise = null;
+      };
+      resolve(database);
+    };
+    request.onerror = () => reject(request.error);
+    request.onblocked = () => reject(new Error("請關閉其他正在開啟工具的分頁。"));
+  }).catch(error => { databasePromise = null; throw error; });
+  return databasePromise;
+}
+function transaction(db, mode, action) {
+  return new Promise((resolve,reject) => {
+    const tx = db.transaction("projects",mode);
+    const request = action(tx.objectStore("projects"));
+    tx.oncomplete = () => resolve(request.result);
+    tx.onabort = () => reject(tx.error || request.error || new Error("儲存作業中斷。"));
+  });
+}
+async function stored(mode, action) {
+  return transaction(await openDatabase(),mode,action);
+}
+function markDirty() {
+  dirty = true;
+  project.updated = Math.max(Date.now(),project.updated + 1);
+  clearTimeout(storageTimer);
+  storageTimer = setTimeout(() => persist(),550);
+}
+function savedFailure(error) {
+  storageError = true;
+  const reason = error?.name === "QuotaExceededError" ? "瀏覽器儲存空間不足。" : "無法使用此瀏覽器的本機儲存。";
+  status(reason + " 請匯出專案 JSON 備份。",true);
+}
+async function persist(manual = false) {
+  clearTimeout(storageTimer);
+  if (!manual && !dirty) return true;
+  if (manual) project.updated = Math.max(Date.now(),project.updated + 1);
+  const captured = project;
+  const data = structuredClone(project);
+  if (interaction?.kind === "point" && interaction.before) {
+    const prior = interaction.before.project.points.find(point => point.id === interaction.point.id);
+    const copy = data.points.find(point => point.id === interaction.point.id);
+    if (prior && copy) { copy.x = prior.x; copy.y = prior.y; }
+  }
+  try {
+    const db = database || await openDatabase();
+    await transaction(db,"readwrite",store => store.put(data));
+    if (project === captured && project.updated === data.updated) {
+      dirty = false;
+      storeLast(project.id);
+      if (manual || storageError) status("已儲存到此瀏覽器。");
+      storageError = false;
+    }
+    return true;
+  } catch (error) {
+    if (project === captured) savedFailure(error);
+    return false;
+  }
+}
+document.addEventListener("visibilitychange",() => {
+  if (document.visibilityState === "hidden" && dirty && database) void persist();
+});
+function setProject(next, message, save = true) {
+  clearTimeout(storageTimer);
+  project = next;
+  selected = null;
+  dirty = false;
+  fieldEdit = null;
+  past = [];
+  future = [];
+  setTool("select");
+  showPanel("points");
+  render();
+  resetView();
+  if (save) markDirty();
+  else storeLast(project.id);
+  status(message);
+}
+function ask(title, detail, options) {
+  const dialog = $("choiceDialog");
+  $("choiceTitle").textContent = title;
+  $("choiceText").textContent = detail;
+  $("choiceButtons").replaceChildren();
+  dialog.returnValue = "";
+  return new Promise(resolve => {
+    for (const [value,label,primary] of options) {
+      const button = node("button",primary ? "primary" : "",label);
+      button.addEventListener("click",() => dialog.close(value));
+      $("choiceButtons").append(button);
+    }
+    dialog.addEventListener("close",() => resolve(dialog.returnValue),{once:true});
+    dialog.showModal();
+  });
+}
+async function switchProject(next, message, save = true) {
+  if (dirty && !await persist()) {
+    const answer = await ask("目前專案尚未儲存","離開前可先關閉此視窗，並將目前的專案匯出為 JSON 備份。",[["discard","離開目前專案"],["cancel","返回",true]]);
+    if (answer !== "discard") return false;
+  }
+  setProject(next,message,save);
+  return true;
+}
+async function projectSummaries() {
+  const db = await openDatabase();
+  return new Promise((resolve,reject) => {
+    const items = [];
+    const tx = db.transaction("projects","readonly");
+    const cursorRequest = tx.objectStore("projects").openCursor();
+    cursorRequest.onsuccess = () => {
+      const cursor = cursorRequest.result;
+      if (!cursor) return;
+      const {id,name,updated,points} = cursor.value;
+      items.push({id,name,updated,count:Array.isArray(points) ? points.length : 0});
+      cursor.continue();
+    };
+    tx.oncomplete = () => resolve(items);
+    tx.onabort = () => reject(tx.error);
+  });
+}
+async function loadProjects() {
+  const list = $("savedProjects");
+  list.replaceChildren(node("p","hint","正在讀取本機專案…"));
+  try {
+    if (dirty) await persist();
+    const projects = await projectSummaries();
+    projects.sort((a,b) => b.updated - a.updated);
+    list.replaceChildren();
+    if (!projects.length) list.append(node("p","hint","目前沒有已儲存的專案。"));
+    for (const item of projects) {
+      const section = node("section","section");
+      section.append(node("h3","",item.name || "未命名專案"));
+      const summary = item.count + " 個互動點" + (item.id === project.id ? " · 目前專案" : "");
+      section.append(node("p","hint",summary));
+      const actions = node("div","row");
+      const open = node("button","","開啟"), duplicate = node("button","","複製"), del = node("button","danger","刪除");
+      open.disabled = item.id === project.id;
+      open.addEventListener("click",() => run(async () => {
+        const clean = await cleanProject(await stored("readonly",store => store.get(item.id)),false);
+        clean.id = item.id;
+        clean.updated = item.updated;
+        $("projectsDialog").close();
+        await switchProject(clean,"已開啟本機專案。",false);
+      }));
+      duplicate.addEventListener("click",() => run(async () => {
+        const copy = await cleanProject(await stored("readonly",store => store.get(item.id)),false);
+        copy.name = copy.name.slice(0,115) + "（副本）";
+        $("projectsDialog").close();
+        if (await switchProject(copy,"已建立專案副本。")) await persist(true);
+      }));
+      del.addEventListener("click",() => run(async () => {
+        const answer = await ask("刪除本機專案？","「" + item.name + "」將從這個瀏覽器移除。",[["delete","刪除專案"],["cancel","取消",true]]);
+        if (answer !== "delete") return;
+        const deletingCurrent = item.id === project.id;
+        if (deletingCurrent) clearTimeout(storageTimer);
+        try {
+          await stored("readwrite",store => store.delete(item.id));
+        } catch (error) {
+          if (deletingCurrent && dirty) markDirty();
+          throw error;
+        }
+        if (deletingCurrent) setProject(blankProject(),"已刪除本機專案。",false);
+        await loadProjects();
+      }));
+      actions.append(open,duplicate,del);
+      section.append(actions);
+      list.append(section);
+    }
+  } catch {
+    list.replaceChildren(node("p","error","無法讀取本機專案。請使用 JSON 匯入或備份。"));
+  }
+}
+async function run(action) {
+  if (busy) return;
+  busy = true;
+  try {
+    await action();
+  } catch (error) {
+    status(error.message || "無法完成操作，請再試一次。",true);
+  } finally {
+    busy = false;
+  }
+}
+async function uploadBackground(file) {
+  if (!file) return;
+  await run(async () => {
+    const next = await readImage(file);
+    let remove = false;
+    if (project.image && project.points.length) {
+      const answer = await ask("更換背景圖片","可保留各互動點在圖上的相對位置，或清除全部互動點。",[
+        ["keep","保留互動點",true],["remove","清除互動點"],["cancel","取消更換"]
+      ]);
+      if (!["keep","remove"].includes(answer)) return;
+      remove = answer === "remove";
+    }
+    const removed = (project.image?.src.length || 0) + (remove ? project.points.reduce((sum,point) => sum + (point.attachment?.src.length || 0),0) : 0);
+    if (!hasImageBudget(next.src.length,removed)) return;
+    edit(() => {
+      project.image = next;
+      if (remove) { project.points = []; selected = null; }
+    },next.size > 10 * 1024 ** 2 ? "這張圖片可能造成匯出的 HTML 檔案過大，建議先縮小或壓縮。" : "圖片已載入。選擇「新增互動點」開始標記。");
+    setTool("select");
+    resetView();
+    showPanel("points");
+  });
+}
+function fileInput(input, handle) {
+  $(input).addEventListener("change",event => {
+    const file = event.target.files[0];
+    event.target.value = "";
+    if (file) void handle(file);
+  });
+}
+fileInput("backgroundFile",uploadBackground);
+fileInput("attachmentFile",file => {
+  const pointId = selected;
+  const projectId = project.id;
+  return run(async () => {
+    const attachment = await readImage(file);
+    const point = project.id === projectId && project.points.find(item => item.id === pointId);
+    if (!point) return;
+    if (!hasImageBudget(attachment.src.length,point.attachment?.src.length || 0)) return;
+    edit(() => { point.attachment = attachment; point.remote = ""; },attachment.size > 10 * 1024 ** 2 ? "已加入附圖。附圖超過 10 MB，匯出檔可能較大。" : "已加入本機附圖。");
+  });
+});
+fileInput("projectFile",file => run(async () => {
+  if (file.size > MAX_PROJECT_BYTES) throw new Error("備份超過 180 MB，無法匯入。");
+  let raw;
+  try { raw = JSON.parse(await file.text()); } catch { throw new Error("JSON 備份格式錯誤。"); }
+  const restored = await cleanProject(raw);
+  await switchProject(restored,"已匯入 JSON 備份為新專案。");
+}));
+for (const event of ["dragenter","dragover"]) canvas.addEventListener(event,e => {
+  if (!e.dataTransfer.types.includes("Files")) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = "copy";
+  canvas.classList.add("drop");
+});
+canvas.addEventListener("dragleave",event => {
+  if (!canvas.contains(event.relatedTarget)) canvas.classList.remove("drop");
+});
+canvas.addEventListener("drop",event => {
+  if (!event.dataTransfer.files.length) return;
+  event.preventDefault();
+  canvas.classList.remove("drop");
+  void uploadBackground(event.dataTransfer.files[0]);
+});
+
+function previewLayout() {
+  const settings = project.settings;
+  $("customDevice").hidden = settings.device !== "custom";
+  const width = settings.device === "custom" ? settings.deviceWidth : settings.device;
+  $("previewPage").style.setProperty("--device",width + "px");
+  for (const el of controls("previewBefore","previewAfter")) el.hidden = settings.context === "image";
+  if (settings.context === "image") return;
+  const product = settings.context === "product";
+  $("previewBefore").replaceChildren(node("h3","",project.name),node("p","muted",product ? "點擊下方的標記，查看產品設計與功能細節。" : "跟著圖片探索本文提到的細節。"));
+  const anchor = node("a","button",product ? "回到產品介紹" : "回到文章開頭");
+  anchor.href = "#previewBefore";
+  anchor.addEventListener("click",event => {
+    event.preventDefault();
+    $("previewBefore").scrollIntoView({block:"nearest"});
+  });
+  $("previewAfter").replaceChildren(node("p","muted",product ? "以上為產品重點。可回到圖片繼續探索。" : "文章內容可接續放在互動圖片下方。"),anchor);
+}
+function renderPreview() {
+  mountedPreview?.();
+  const host = node("div");
+  $("previewMount").replaceChildren(host);
+  mountedPreview = renderGuide(host,{...project,tour:$("previewTour").value},setMarker);
+}
+function openPreview() {
+  if (!project.image) return;
+  const {device,deviceWidth,context} = project.settings;
+  $("device").value = device;
+  $("deviceWidth").value = deviceWidth;
+  $("context").value = context;
+  $("previewTour").value = project.tour;
+  previewLayout();
+  $("previewDialog").showModal();
+  $("preview").setAttribute("aria-pressed","true");
+  renderPreview();
+}
+$("previewDialog").addEventListener("close",() => {
+  mountedPreview?.();
+  mountedPreview = null;
+  $("previewMount").replaceChildren();
+  $("preview").setAttribute("aria-pressed","false");
+});
+function htmlEscape(value) {
+  return String(value).replace(/[&<>"']/g,char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[char]);
+}
+function scriptData(value) {
+  return JSON.stringify(value).replace(/[<>&\u2028\u2029]/g,char => "\\u" + char.charCodeAt(0).toString(16).padStart(4,"0"));
+}
+function guideMarkup() {
+  const data = {name:project.name,image:{src:project.image.src,alt:project.image.alt,width:project.image.width,height:project.image.height},tour:project.tour,
+    points:project.points.map(point => ({...point,attachment:point.attachment ? {src:point.attachment.src} : null}))};
+  const init = "(function(){const script=document.currentScript;const host=script.previousElementSibling;if(host?.hasAttribute('data-wumetax-guide'))(" + renderGuide.toString() + ")(host," + scriptData(data) + "," + setMarker.toString() + ");})();";
+  return '<div data-wumetax-guide="' + htmlEscape(project.id) + '"></div>\n<scr' + 'ipt>' + init + "</scr" + "ipt>";
+}
+function standaloneHtml(markup) {
+  return '<!DOCTYPE html>\n<html lang="zh-Hant">\n<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>' + htmlEscape(project.name) + '</title><style>body{margin:0;background:#f3f6fb}main{max-width:1500px;margin-inline:auto}</style></head>\n<body><main>' + markup + '</main></body>\n</html>\n';
+}
+function download(contents, type, extension) {
+  const name = project.name.trim().replace(/[<>:"/\\|?*\u0000-\u001f]/g,"_").replace(/[. ]+$/g,"").slice(0,90) || "hotspot-studio";
+  const url = URL.createObjectURL(new Blob([contents],{type}));
+  const link = node("a");
+  link.href = url;
+  link.download = name + "." + extension;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url),60_000);
+}
+let exportedMarkup = "";
+let exportedHtml = "";
+function refreshEmbed() {
+  const iframe = $("embedMode").value === "iframe";
+  $("iframeFields").hidden = !iframe;
+  $("embedHint").textContent = iframe
+    ? "先下載完整 HTML，部署到自己管理的 HTTPS 網址，再將 iframe 貼入 Gutenberg 的自訂 HTML 區塊。下載與託管是兩個步驟。"
+    : "將完整程式碼貼到 HTML 網頁或 Gutenberg 自訂 HTML 區塊。WordPress 可能依權限或站台設定移除 script，此時可改用已部署作品的 iframe。";
+  const url = safeUrl($("iframeUrl").value,true);
+  const height = clamp($("iframeHeight").valueAsNumber || 600,160,3000);
+  const title = $("iframeTitle").value.trim() || project.name || "互動圖片導覽";
+  const frameCode = url ? '<iframe src="' + htmlEscape(url) + '" width="100%" height="' + height + '" title="' + htmlEscape(title) + '" loading="lazy" style="border:0"' + ($("iframeFullscreen").checked ? ' allowfullscreen' : '') + '></iframe>' : "";
+  const code = iframe ? frameCode : exportedMarkup;
+  if ($("embedCode").value !== code) $("embedCode").value = code;
+  $("copyEmbed").disabled = !code;
+  $("exportFeedback").textContent = iframe && !url ? "請填寫有效的已部署 HTTPS 網址。" : "";
+}
+function openExport() {
+  const settings = project.settings;
+  exportedMarkup = project.image ? guideMarkup() : "";
+  exportedHtml = exportedMarkup ? standaloneHtml(exportedMarkup) : "";
+  $("downloadHtml").disabled = !exportedHtml;
+  const length = new Blob([exportedHtml]).size;
+  $("exportSize").textContent = length ? "完整 HTML 約 " + bytes(length) + (length > 10 * 1024 ** 2 ? " · 檔案較大，可先縮小背景或附圖。" : " · 本機圖片隨檔內嵌。") : "加入背景圖片後即可下載互動 HTML。現在仍可備份 JSON。";
+  $("embedMode").value = settings.embedMode;
+  $("iframeUrl").value = settings.iframeUrl;
+  $("iframeHeight").value = settings.iframeHeight;
+  $("iframeTitle").value = settings.iframeTitle || project.name;
+  $("iframeFullscreen").checked = settings.iframeFullscreen;
+  refreshEmbed();
+  $("exportDialog").showModal();
+}
+$("exportDialog").addEventListener("close",() => {
+  $("embedCode").value = "";
+  exportedMarkup = "";
+  exportedHtml = "";
+});
+async function copyEmbed() {
+  const code = $("embedCode");
+  try {
+    await navigator.clipboard.writeText(code.value);
+    $("exportFeedback").textContent = "已複製嵌入程式碼。";
+  } catch {
+    code.focus();
+    code.select();
+    let copied = false;
+    try { copied = document.execCommand("copy"); } catch { /* Keep text selected for manual copy. */ }
+    $("exportFeedback").textContent = copied ? "已複製嵌入程式碼。" : "程式碼已選取，可按 Ctrl + C／⌘ + C 或使用手機選單複製。";
+  }
+}
+
+const action = (key, callback) => $(key).addEventListener("click",callback);
+action("showPoints",() => showPanel("points"));
+action("showContent",() => showPanel("content"));
+action("newProject",() => run(() => switchProject(blankProject(),"已建立新專案。")));
+action("openProjects",() => run(async () => {
+  $("projectsDialog").showModal();
+  await loadProjects();
+}));
+action("importProject",() => $("projectFile").click());
+action("saveProject",() => run(() => persist(true)));
+action("undo",() => undoRedo(false));
+action("redo",() => undoRedo(true));
+action("uploadImage",() => $("backgroundFile").click());
+action("emptyUpload",() => $("backgroundFile").click());
+action("clearImage",() => run(async () => {
+  if (project.points.length) {
+    const result = await ask("清除圖片與互動點？","清除後可用「復原」找回這次操作前的內容。",[["clear","清除"],["cancel","取消",true]]);
+    if (result !== "clear") return;
+  }
+  edit(() => { project.image = null; project.points = []; selected = null; },"已清除背景圖片。");
+}));
+action("compressImage",() => {
+  compressed = null;
+  $("compressionBefore").textContent = "目前圖片為 " + project.image.width + " × " + project.image.height + " · " + bytes(project.image.size);
+  $("compressionAfter").textContent = "先計算處理結果，再決定是否套用。";
+  $("useCompressed").disabled = true;
+  $("compressionDialog").showModal();
+});
+$("compressionForm").addEventListener("input",() => {
+  compressed = null;
+  $("useCompressed").disabled = true;
+  $("compressionAfter").textContent = "已變更設定，請重新計算。";
+});
+$("compressionForm").addEventListener("submit",event => {
+  event.preventDefault();
+  void run(async () => {
+    const source = project.image;
+    const fields = event.target.elements;
+    const format = fields.format.value;
+    const quality = fields.quality.valueAsNumber / 100;
+    const width = Math.min(fields.width.valueAsNumber,source.width);
+    const height = Math.max(1,Math.round(source.height * width / source.width));
+    const surface = document.createElement("canvas");
+    const version = [...new FormData(event.target)].join("|");
+    surface.width = width;
+    surface.height = height;
+    const ctx = surface.getContext("2d");
+    $("compressionAfter").textContent = "正在處理圖片…";
+    $("useCompressed").disabled = true;
+    compressed = null;
+    try {
+      if (format === "image/jpeg") {
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0,0,width,height);
+      }
+      ctx.drawImage(await decode(source.src),0,0,width,height);
+      const blob = await canvasBlob(surface,format,quality);
+      const suffix = format.split("/")[1];
+      const result = await readImage(blob,source.name.replace(/\.[^.]+$/,"") + "-縮小." + suffix);
+      if (!$("compressionDialog").open || [...new FormData(event.target)].join("|") !== version) return;
+      compressed = {...result,originalWidth:source.originalWidth,originalHeight:source.originalHeight,alt:source.alt};
+      $("useCompressed").disabled = false;
+      $("compressionAfter").textContent = bytes(source.size) + " → " + bytes(result.size) + " · " + width + " × " + height + (result.size > source.size ? " · 處理後檔案較大" : "");
+    } catch (error) {
+      $("compressionAfter").textContent = error.message || "圖片處理失敗，請改用較小的圖片。";
+    }
+  });
+});
+action("useCompressed",() => {
+  if (!compressed) return;
+  if (!hasImageBudget(compressed.src.length,project.image.src.length)) {
+    $("compressionAfter").textContent = "專案內嵌圖片總量過大，請降低最大寬度或品質。";
+    return;
+  }
+  edit(() => { project.image = compressed; },"已套用處理後圖片。原始檔案保留在你的裝置上。");
+  compressed = null;
+  resetView();
+  $("compressionDialog").close();
+});
+action("selectTool",() => { setTool("select"); status("選取模式 · 可拖曳或使用方向鍵移動標記。"); });
+action("panTool",() => { setTool("pan"); status("拖曳畫布以移動檢視位置。"); });
+action("addPoint",() => setTool(tool === "add" ? "select" : "add"));
+action("zoomIn",() => zoomBy(1.25));
+action("zoomOut",() => zoomBy(.8));
+action("fitView",() => resetView());
+action("actualView",() => resetView("actual"));
+action("upPoint",() => shiftOrder(-1));
+action("downPoint",() => shiftOrder(1));
+action("copyPoint",copyPoint);
+action("togglePoint",() => {
+  const point = current();
+  if (point) edit(() => { point.hidden = !point.hidden; },point.hidden ? "已顯示互動點。" : "已隱藏互動點，預覽和匯出不會顯示。");
+});
+action("removePoint",removePoint);
+action("attachImage",() => $("attachmentFile").click());
+action("removeAttachment",() => {
+  const point = current();
+  if (point) edit(() => { point.attachment = null; point.remote = ""; },"已移除附加圖片。");
+});
+action("applyStyle",() => {
+  if (!current()) return;
+  const style = markerStyle(current());
+  edit(() => { for (const point of project.points) Object.assign(point,style); },"已套用外觀至所有互動點。");
+});
+action("resetStyle",() => {
+  const point = current();
+  if (point) edit(() => Object.assign(point,styles),"已恢復預設外觀。");
+});
+for (const button of document.querySelectorAll("[data-demo]")) button.addEventListener("click",() => run(async () => {
+  const next = await makeDemo(button.dataset.demo);
+  await switchProject(next,"已載入「" + next.name + "」範本。");
+}));
+for (const button of document.querySelectorAll("[data-close]")) button.addEventListener("click",() => button.closest("dialog").close());
+for (const [key,read,write] of [
+  ["projectName",() => project.name,value => { project.name = value; }],
+  ["imageAlt",() => project.image?.alt,value => { if (project.image) { project.image.alt = value; image.alt = value; } }]
+]) {
+  const input = $(key);
+  input.addEventListener("input",() => { if (read() !== input.value) handleField(input,write,input.value); });
+  input.addEventListener("change",() => {
+    if (key === "projectName") {
+      const name = input.value.trim() || "未命名專案";
+      if (project.name !== name) handleField(input,write,name);
+      input.value = name;
+    }
+    fieldEdit = null;
+  });
+  input.addEventListener("blur",() => { fieldEdit = null; });
+}
+$("tourMode").addEventListener("change",event => edit(() => { project.tour = event.target.value; },"已更新作品的瀏覽方式。"));
+action("preview",openPreview);
+$("previewTour").addEventListener("change",event => {
+  project.tour = event.target.value;
+  $("tourMode").value = project.tour;
+  markDirty();
+  renderPreview();
+});
+for (const key of ["device","context","deviceWidth"]) {
+  $(key).addEventListener("change",event => {
+    project.settings[key] = key === "deviceWidth" ? clamp(event.target.valueAsNumber || 480,280,2400) : event.target.value;
+    event.target.value = project.settings[key];
+    markDirty();
+    previewLayout();
+  });
+}
+action("export",openExport);
+action("downloadHtml",() => { if (exportedHtml) download(exportedHtml,"text/html;charset=utf-8","html"); });
+action("downloadJson",() => download(JSON.stringify(project),"application/json;charset=utf-8","json"));
+action("copyEmbed",copyEmbed);
+for (const key of ["embedMode","iframeUrl","iframeHeight","iframeTitle","iframeFullscreen"]) {
+  $(key).addEventListener("input",event => {
+    const input = event.target;
+    project.settings[key] = key === "iframeUrl" ? safeUrl(input.value,true) : key === "iframeHeight" ? clamp(input.valueAsNumber || 600,160,3000) : key === "iframeFullscreen" ? input.checked : input.value;
+    markDirty();
+    refreshEmbed();
+  });
+}
+document.addEventListener("keydown",event => {
+  if (document.querySelector("dialog[open]")) return;
+  const inField = event.target.closest?.("input,textarea,select,[contenteditable]");
+  if ((event.ctrlKey || event.metaKey) && !event.altKey && event.key.toLowerCase() === "z") {
+    if (inField) return;
+    event.preventDefault();
+    undoRedo(event.shiftKey);
+    return;
+  }
+  if (inField || interaction) return;
+  if (event.key === "Escape" && tool !== "select") setTool("select");
+  if (event.altKey && event.key === "Enter" && tool === "add") {
+    event.preventDefault();
+    addPoint(50,50);
+    return;
+  }
+  const point = current();
+  if (!point || event.ctrlKey || event.metaKey) return;
+  if (event.key === "Delete") {
+    event.preventDefault();
+    removePoint();
+    return;
+  }
+  const delta = {ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[event.key];
+  if (!delta) return;
+  event.preventDefault();
+  const step = event.shiftKey ? 2 : .25;
+  const x = position(point.x + step * delta[0]), y = position(point.y + step * delta[1]);
+  if (x !== point.x || y !== point.y) edit(() => { point.x = x; point.y = y; });
+});
+render();
+const initialProject = project;
+(async () => {
+  try {
+    let previous;
+    try { previous = localStorage.getItem(lastProjectKey); } catch { /* The project list can still use IndexedDB. */ }
+    const db = await openDatabase();
+    if (!previous) return;
+    const saved = await transaction(db,"readonly",store => store.get(previous));
+    if (!saved || project !== initialProject || dirty || busy) return;
+    const restored = await cleanProject(saved,false);
+    if (project !== initialProject || dirty || busy) return;
+    restored.id = saved.id;
+    restored.updated = saved.updated;
+    setProject(restored,"已恢復上次儲存的專案。",false);
+  } catch (error) {
+    savedFailure(error);
+  }
+})();
+</script>
+</body>
+</html>
