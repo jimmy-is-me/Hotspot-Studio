@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111827">
 <title>免費線上圖片互動標記工具｜圖片熱點導覽、產品介紹與 HTML 嵌入｜Hotspot Studio</title>
 <meta name="description" content="免費使用 WUMETAX Hotspot Studio 圖片互動導覽製作器，上傳圖片即可新增可點擊標記、文字說明、圖片及連結，支援產品介紹、室內空間導覽、網站操作教學與手機 RWD 預覽，一鍵匯出互動 HTML 或網站嵌入碼，資料在瀏覽器本機處理。">
 <link rel="canonical" href="https://hotspot-studio.wumetax.com/">
@@ -16,49 +17,64 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%232563eb'/%3E%3Ccircle cx='20' cy='20' r='10' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='4' fill='white'/%3E%3C/svg%3E">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"WUMETAX Hotspot Studio","applicationCategory":"DesignApplication","operatingSystem":"Web browser","url":"https://hotspot-studio.wumetax.com/","inLanguage":"zh-Hant","author":{"@type":"Organization","name":"WUMETAX","url":"https://wumetax.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"}}</script>
 <style>
-:root{color-scheme:light;--ink:#111827;--muted:#526077;--line:#e5e7eb;--blue:#2563eb;--soft:#eff6ff;--surface:#f3f4f6;font:15px/1.55 Outfit,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);background:var(--surface)}
+:root{color-scheme:light;--ink:#111827;--muted:#4b5563;--line:#e5e7eb;--line-strong:#d1d5db;--brand:#3b82f6;--blue:#2563eb;--soft:#eff6ff;--surface:#f3f4f6;--panel-head:#f9fafb;--amber:#f59e0b;--radius:6px;font:15px/1.55 Outfit,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);background:white}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0} [hidden]{display:none!important}
 button,input,textarea,select{font:inherit;color:inherit} button{cursor:pointer} button:disabled{cursor:default;opacity:.43}
-button,.button{min-height:36px;border:1px solid var(--line);border-radius:8px;background:white;padding:5px 11px;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;white-space:nowrap;font-weight:600;font-size:.88rem}
-button:hover:not(:disabled),.button:hover{background:var(--soft);border-color:#bfd7fa;color:#1d4ed8}
+button,.button{min-height:36px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface);padding:5px 11px;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;white-space:nowrap;font-weight:600;font-size:.88rem}
+button:hover:not(:disabled),.button:hover{background:#e5e7eb;border-color:#9ca3af}
 button.primary{background:var(--blue);color:white;border-color:var(--blue)} button.primary:hover:not(:disabled){background:#1d4ed8;color:white}
 button[aria-pressed="true"]{background:#dbeafe;color:#1e40af;border-color:#a4c8fb}
-:focus-visible{outline:3px solid #3b82f6;outline-offset:3px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 a{color:#1d4ed8} svg.icon{width:17px;height:17px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 h1,h2,h3,p{margin:0} label{display:grid;gap:5px;font-size:.86rem;font-weight:600;min-width:0}
-input:not([type=checkbox]):not([type=color]),select,textarea{width:100%;min-width:0;padding:7px 9px;border:1px solid #cdd5e2;background:white;border-radius:8px}
-input[type=color]{width:100%;height:37px;padding:3px;border:1px solid #cdd5e2;background:white;border-radius:8px}
+input:not([type=checkbox]):not([type=color]),select,textarea{width:100%;min-width:0;padding:7px 9px;border:1px solid var(--line-strong);background:white;border-radius:var(--radius)}
+input[type=color]{width:100%;height:37px;padding:3px;border:1px solid var(--line-strong);background:white;border-radius:var(--radius)}
 input[type=checkbox]{width:17px;height:17px;accent-color:var(--blue);margin:0} textarea{resize:vertical} .check{display:flex;align-items:center;gap:8px}
-.bar{background:#111827;color:white;padding:12px max(16px,calc((100% - 1696px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:1.06rem;font-weight:700}
-.brand-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#2563eb}.brand-icon svg{width:24px;height:24px}
-.brand small{display:block;font-size:.64rem;letter-spacing:.13em;color:#a8b6cf;font-weight:650}
-.bar button:not(.primary){background:#1f2937;border-color:#3c4658;color:#f1f5ff}.bar button:hover:not(:disabled){border-color:#7ba4ed}
-.bar button[aria-pressed="true"]{background:#334b77}.actions,.row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.row>*{min-width:0}
-.shell{max-width:1728px;margin:auto;padding:22px 16px 0}
-.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:0 0 16px}
-.eyebrow{font-size:.7rem;letter-spacing:.17em;font-weight:750;color:#1d4ed8}
-h1{font-size:clamp(1.35rem,2.6vw,2rem);letter-spacing:-.035em;line-height:1.25;margin:4px 0}
+.bar{background:var(--ink);color:white;border-bottom:4px solid var(--brand);min-height:72px;padding:12px clamp(14px,2.6vw,30px);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;line-height:1.1;min-width:0}
+.brand-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:var(--radius);background:var(--brand);font-size:28px;font-weight:900}
+.brand strong{display:block;font-size:clamp(1rem,2.1vw,1.42rem);letter-spacing:-.025em}.brand h1{margin:4px 0 0;color:#d1d5db;font-size:.73rem;font-weight:650}
+.lab-badge{align-self:flex-start;background:var(--amber);color:var(--ink);border-radius:5px;padding:3px 7px;font-size:.75rem;font-weight:850}
+.bar-center{display:flex;align-items:center;gap:10px;color:#d1d5db;font-size:.91rem;font-weight:650}
+.eyebrow{color:white;background:#1f2937;border:1px solid #374151;border-radius:var(--radius);font:700 .72rem/1.25 ui-monospace,monospace;padding:5px 7px;letter-spacing:.045em}
+.privacy-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid #374151;border-radius:var(--radius);background:#1f2937;color:#e5e7eb;padding:6px 9px;font-size:.78rem;white-space:nowrap}
+.privacy-chip::before,.save-state::before{content:"";width:8px;height:8px;border-radius:50%;background:#4ade80;flex:none}
+.actions,.row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.row>*{min-width:0}
+.command-bar{position:sticky;top:0;z-index:5;background:var(--panel-head);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;padding:9px clamp(14px,2.6vw,30px)}
+.command-bar .actions{column-gap:6px}.project-tools{display:flex;align-items:center;gap:10px;min-width:0}
+.save-state{display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:.76rem;color:var(--muted)}
+.save-state::before{background:#9ca3af}.save-state[data-state=saved]::before{background:#16a34a}.save-state[data-state=pending]::before{background:#d97706}.save-state[data-state=error]::before{background:#dc2626}
+.guide-strip{background:var(--brand);color:var(--ink);display:flex;align-items:center;gap:12px 20px;padding:8px clamp(14px,2.6vw,30px);font-size:.84rem;min-height:48px}
+.guide-strip a{margin-left:auto;color:inherit;font-weight:750;text-underline-offset:3px}
+.guide-step{display:flex;align-items:center;gap:6px;white-space:nowrap}.guide-step b{display:grid;place-items:center;width:23px;height:23px;background:var(--ink);color:white;border-radius:5px;font-size:.75rem}
+.shell{max-width:1728px;margin:auto;padding:12px 14px 0}
+.workspace,.learn{scroll-margin-top:76px}
 .muted,.hint{color:var(--muted);font-size:.85rem;overflow-wrap:anywhere}.hint{font-size:.77rem}
-.project{min-width:min(230px,100%);max-width:340px}.project span{color:var(--muted)}
+.project{display:flex;align-items:center;gap:7px}.project span{color:var(--muted);white-space:nowrap}.project input{max-width:210px}
 .workspace{display:grid;grid-template-columns:minmax(210px,242px) minmax(0,1fr) minmax(252px,292px);gap:12px;align-items:start}
-.panel,.workbench{background:white;border:1px solid var(--line);border-radius:13px;min-width:0;box-shadow:0 2px 4px #11182706}
+.panel,.workbench{background:white;border:1px solid var(--line);border-radius:var(--radius);min-width:0}
 .panel{padding:13px;display:grid;gap:13px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:-13px -13px 0;padding:10px 13px;background:var(--panel-head);border-bottom:1px solid var(--line);border-radius:var(--radius) var(--radius) 0 0}
+.panel-kicker{display:block;color:#1d4ed8;font:700 .68rem/1.35 ui-monospace,monospace;letter-spacing:.075em;margin-bottom:2px}
 .panel h2,.toolbar h2{font-size:.97rem}.section{border-top:1px solid var(--line);padding-top:12px;display:grid;gap:8px}
 .spread{display:flex;justify-content:space-between;align-items:center;gap:7px}
-.badge{font-size:.72rem;padding:1px 7px;color:#245396;background:#eaf2ff;border-radius:20px;font-weight:700}
+.badge{font-size:.72rem;padding:2px 7px;color:#1d4ed8;background:#dbeafe;border-radius:var(--radius);font-weight:700}
 .list{display:grid;gap:5px;max-height:300px;overflow:auto;padding:3px;list-style:none;margin:0}
 .list button{width:100%;justify-content:flex-start;text-align:left;white-space:normal;overflow-wrap:anywhere;line-height:1.3;padding:8px}.list button strong{font-size:.82rem}.list button small{display:block;font-size:.71rem;color:var(--muted);margin-top:3px}
+.list button{background:white}.list button:hover{background:var(--soft)}.list button[aria-pressed=true]{background:#dbeafe}
+.list li[data-drop=before]{box-shadow:0 -3px var(--blue)}.list li[data-drop=after]{box-shadow:0 3px var(--blue)}
+.list button[draggable=true]{cursor:grab}.list .grip{margin-left:auto;color:var(--muted);width:14px}
+#listActions button{min-width:31px;padding-inline:6px}
 .num{background:#eaf1ff;color:#214a96;border-radius:7px;min-width:27px;padding:5px 3px;text-align:center;font-size:.75rem}
-.toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:11px 12px;border-bottom:1px solid var(--line)}
-.canvas{height:clamp(390px,60vh,720px);position:relative;overflow:auto;background-color:#f3f6fc;background-image:radial-gradient(#c9d6e9 1px,transparent 1px);background-size:16px 16px;overscroll-behavior:contain}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:10px 12px;background:var(--panel-head);border-bottom:1px solid var(--line);border-radius:var(--radius) var(--radius) 0 0}
+.canvas{height:clamp(390px,60vh,720px);position:relative;overflow:auto;background-color:var(--surface);background-image:radial-gradient(#cbd5e1 1px,transparent 1px);background-size:16px 16px;overscroll-behavior:contain}
 .board{display:grid;place-items:center;min-width:100%;min-height:100%;width:max-content;height:max-content;padding:44px;position:relative}
 .frame{position:relative;flex:none;isolation:isolate;line-height:0}.frame img{width:100%;height:100%;display:block;user-select:none}
 .canvas[data-tool=add] .frame img{cursor:crosshair}.canvas[data-tool=pan]{cursor:grab;touch-action:none}.canvas[data-tool=pan].dragging{cursor:grabbing}
 .canvas.drop{outline:3px dashed #2563eb;outline-offset:-6px;background-color:#e5efff}
 .empty{height:100%;display:grid;place-items:center;text-align:center;padding:18px}
-.empty-inner{display:grid;justify-items:center;gap:10px;width:min(100%,365px);padding:21px;background:#ffffffef;border:1px solid #dce5f4;border-radius:16px;box-shadow:0 12px 30px #20487e10}
+.empty-inner{display:grid;justify-items:center;gap:10px;width:min(100%,380px);padding:21px;background:var(--soft);border:1px dashed #93c5fd;border-radius:var(--radius)}
 .empty-inner h3{font-size:1.16rem}.empty-art{width:min(190px,100%);height:auto}
 .statusbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line);font-size:.75rem;color:var(--muted);min-height:39px}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.form{display:grid;gap:9px}.form fieldset{min-width:0;border:0;margin:0;padding:0;display:grid;gap:9px}
@@ -66,44 +82,60 @@ h1{font-size:clamp(1.35rem,2.6vw,2rem);letter-spacing:-.035em;line-height:1.25;m
 summary{cursor:pointer;font-weight:650}.thumb{width:100%;max-height:110px;object-fit:contain;border:1px solid var(--line);border-radius:6px}
 .editor-marker{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);z-index:1;min-width:0;min-height:0;width:var(--size);height:var(--size);padding:0;border:var(--border) solid var(--stroke);border-radius:50%;background:var(--fill);color:var(--fg);box-shadow:var(--shadow);opacity:var(--opacity);font-size:var(--font);line-height:1;touch-action:none}
 .editor-marker:hover:not(:disabled),.editor-marker[aria-pressed=true]{background:var(--fill);color:var(--fg);border-color:var(--stroke);z-index:2}
-.editor-marker[aria-pressed=true]{outline:3px solid #111827;outline-offset:3px}.editor-marker[data-hidden=true]{opacity:.45;border-style:dashed}
+.editor-marker[aria-pressed=true]{outline:3px solid #111827;outline-offset:3px}.editor-marker:focus-visible{outline-color:var(--amber)}.editor-marker[data-hidden=true]{opacity:.45;border-style:dashed}
 .editor-marker svg{width:57%;height:57%;pointer-events:none}
 .editor-marker[data-pulse=true]::after{content:"";position:absolute;inset:-3px;border:2px solid var(--fill);border-radius:50%;pointer-events:none;animation:editorPulse 2.6s ease-out infinite}
 @keyframes editorPulse{from{transform:scale(.93);opacity:.85}75%,to{transform:scale(1.55);opacity:0}}
 .mobile-tabs{display:none}
-dialog{border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:0 20px 75px #11182744;width:min(620px,calc(100% - 24px));max-height:calc(100dvh - 24px);color:var(--ink)}
+dialog{border:1px solid var(--line-strong);border-radius:var(--radius);padding:16px;width:min(620px,calc(100% - 24px));max-height:calc(100dvh - 24px);color:var(--ink)}
+dialog>div.spread:first-child{margin:-16px -16px 0;padding:11px 16px;background:var(--panel-head);border-bottom:1px solid var(--line)}
 dialog::backdrop{background:#101b37a8}dialog h2{font-size:1.12rem}.dialog-body{display:grid;gap:12px;margin-top:13px}
 #previewDialog{width:min(1540px,calc(100% - 24px))}.preview-scroll{overflow:auto;background:#e9edf5;border-radius:10px;padding:12px;max-height:70dvh}
-.preview-page{margin-inline:auto;background:white;width:var(--device);border-radius:10px;overflow:hidden}.context{padding:16px 20px}.context h3{margin-bottom:5px}
+.preview-page{margin-inline:auto;background:white;width:var(--device);border-radius:var(--radius);outline:1px solid var(--line-strong);overflow:hidden}.context{padding:16px 20px}.context h3{margin-bottom:5px}
+.browser-chrome{height:30px;padding:0 9px;display:flex;align-items:center;gap:6px;background:var(--panel-head);border-bottom:1px solid var(--line);font:600 .71rem ui-monospace,monospace;color:var(--muted)}
+.browser-chrome i{width:8px;height:8px;border-radius:50%;background:#ef776f}.browser-chrome i:nth-child(2){background:#efc95d}.browser-chrome i:nth-child(3){background:#64c67d}
 .export-code{font-family:ui-monospace,monospace;font-size:.8rem;min-height:100px}
 .learn{margin:20px 0;display:grid;grid-template-columns:1.15fr 1fr;gap:12px}.learn .panel{padding:17px}.learn details{padding-top:7px;border-top:1px solid var(--line)}.learn p{font-size:.9rem;color:var(--muted)}.learn details p{margin-top:4px}
-footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:0 0 20px}
+footer{background:var(--ink);color:#d1d5db;border-top:4px solid var(--brand);font-size:.8rem;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:14px clamp(14px,2.6vw,30px)}
+footer strong,footer a{color:white}
+.review-list{margin:6px 0;padding-left:21px;font-size:.82rem}.review-list li+li{margin-top:4px}.review-list button{min-height:28px;margin-left:4px}
+body.focus-workspace :is(.bar,.guide-strip,.learn,footer){display:none}
+body.focus-workspace .canvas{height:clamp(320px,calc(100dvh - 180px),1000px)}
 .error{color:#b91c1c}.danger{color:#b91c1c}
-@media(max-width:1060px){.workspace{grid-template-columns:185px minmax(0,1fr) 235px}.shell{padding-inline:10px}.panel{padding:10px}}
-@media(max-width:850px){.workspace{grid-template-columns:minmax(0,1fr)}.workbench{grid-row:1}.canvas{height:clamp(280px,53vh,590px)}.mobile-tabs{display:flex;margin-bottom:9px}.workspace[data-panel=content] #leftPanel,.workspace[data-panel=points] #rightPanel{display:none}.learn{grid-template-columns:1fr}.shell{padding-top:15px}.intro{align-items:flex-start}}
-@media(max-width:500px){.bar{padding:10px;gap:9px}.actions{gap:4px}.actions button{padding-inline:7px}.toolbar{padding:8px}.preview-scroll{padding:5px}.statusbar{font-size:.7rem}.project{min-width:100%}}
+@media(max-width:1200px){.bar-center .eyebrow{display:none}}
+@media(max-width:1060px){.workspace{grid-template-columns:194px minmax(0,1fr) 235px}.shell{padding-inline:10px}.panel{padding:10px}.panel-head{margin:-10px -10px 0;padding-inline:10px}}
+@media(max-width:850px){.workspace{grid-template-columns:minmax(0,1fr)}.workbench{grid-row:1}.canvas{height:clamp(260px,44vh,510px)}.mobile-tabs{display:flex;margin-bottom:9px}.workspace[data-panel=content] #leftPanel,.workspace[data-panel=points] #rightPanel{display:none}.learn{grid-template-columns:1fr}.bar-center{display:none}.workspace,.learn,.panel{scroll-margin-top:132px}}
+@media(max-width:600px){.bar{min-height:58px;padding:8px 10px;gap:8px}.brand{gap:6px}.brand-icon{width:35px;height:35px;font-size:22px}.brand h1{font-size:.65rem}.lab-badge{font-size:.61rem;padding:2px 5px}.privacy-chip{display:none}.guide-strip{min-height:38px;gap:6px;justify-content:space-between;font-size:.72rem;padding-inline:10px}.guide-strip a,.guide-label,.guide-arrow{display:none}.guide-step b{width:18px;height:18px}.command-bar{padding:6px 10px;gap:5px}.command-bar .actions{gap:4px}.actions button{padding-inline:6px}.project-tools{gap:6px;justify-content:space-between;width:100%}.project input{max-width:146px}.project span{font-size:.74rem}.toolbar{padding:8px}.preview-scroll{padding:5px}.statusbar{font-size:.72rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}.editor-marker[data-pulse=true]::after{animation:none}}
 </style>
 </head>
 <body>
 <header class="bar">
-  <div class="brand"><span class="brand-icon" data-icon="target"></span><span>Hotspot Studio<small>WUMETAX LAB</small></span></div>
+  <a class="brand" href="https://wumetax.com/"><span class="brand-icon" aria-hidden="true">W</span><div><strong>WUMETAX Hotspot</strong><h1>圖片互動導覽製作工作站</h1></div><span class="lab-badge">LAB</span></a>
+  <div class="bar-center"><span class="eyebrow">IMAGE HOTSPOT STUDIO</span><span>標記圖片、製作導覽與匯出 HTML</span></div>
+  <div class="row"><span class="privacy-chip">圖片本機處理</span><a class="button" href="#help">使用說明</a></div>
+</header>
+<nav class="command-bar" aria-label="專案與工作區工具">
   <div class="actions" aria-label="專案工具">
     <button id="newProject" data-icon="plus">新建</button><button id="openProjects" data-icon="folder">專案</button><button id="importProject" data-icon="upload">匯入</button><button id="saveProject" data-icon="save">儲存</button>
     <button id="undo" data-icon="undo" aria-label="復原" title="復原（Ctrl + Z）"></button><button id="redo" data-icon="redo" aria-label="重做" title="重做（Ctrl + Shift + Z）"></button>
     <button id="preview" data-icon="eye" aria-pressed="false">預覽</button><button id="export" class="primary" data-icon="download">匯出</button>
+    <button id="focusWorkspace" data-icon="expand" aria-label="專注模式" title="專注模式" aria-pressed="false"></button>
   </div>
-</header>
-<main class="shell">
-  <section class="intro">
-    <div><p class="eyebrow">IMAGE HOTSPOT WORKSPACE</p><h1>圖片互動導覽製作工作站</h1><p class="muted">在圖片上標出細節，讓瀏覽者點開探索。</p></div>
+  <div class="project-tools">
     <label class="project"><span>專案名稱</span><input id="projectName" maxlength="120" value="未命名專案" autocomplete="off"></label>
-  </section>
+    <span class="save-state" id="saveState" data-state="idle" role="status">尚未儲存</span>
+  </div>
+</nav>
+<section class="guide-strip" aria-label="快速使用流程">
+  <strong class="guide-label">快速開始</strong><span class="guide-step"><b>1</b>上傳圖片</span><span class="guide-arrow" aria-hidden="true">→</span><span class="guide-step"><b>2</b>放置互動點</span><span class="guide-arrow" aria-hidden="true">→</span><span class="guide-step"><b>3</b>預覽並匯出</span><a href="#help">查看完整說明</a>
+</section>
+<main class="shell">
   <nav class="mobile-tabs row" aria-label="手機工作區"><button id="showPoints" aria-pressed="true">圖片與標記</button><button id="showContent" aria-pressed="false">內容與外觀</button></nav>
   <div class="workspace" id="workspace" data-panel="points">
     <aside class="panel" id="leftPanel" aria-label="圖片與互動點">
-      <h2>背景圖片</h2>
-      <div class="row"><button id="uploadImage" class="primary" data-icon="upload">上傳圖片</button><button id="clearImage" aria-label="清除背景圖片" data-icon="trash"></button></div>
+      <div class="panel-head"><div><span class="panel-kicker">PROJECT</span><h2>圖片與互動點</h2></div></div>
+      <div class="row"><button id="uploadImage" class="primary" data-icon="upload">上傳圖片</button><button id="pasteImage" title="貼上剪貼簿圖片" aria-label="貼上剪貼簿圖片" data-icon="clipboard"></button><button id="clearImage" aria-label="清除背景圖片" data-icon="trash"></button></div>
       <p class="hint" id="imageInfo">支援 JPG、PNG、WebP</p>
       <label id="backgroundAlt" hidden>背景圖片替代文字<input id="imageAlt" maxlength="250" placeholder="描述圖片的主要內容"></label>
       <button id="compressImage" hidden>縮小或壓縮圖片</button>
@@ -111,18 +143,20 @@ footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-bet
         <div class="spread"><h2>互動點</h2><span class="badge" id="pointCount">0</span></div>
         <button id="addPoint" data-icon="plus" aria-pressed="false">新增互動點</button>
         <p class="hint" id="listHint">上傳圖片後，即可在畫面上標記位置。</p>
-        <ol class="list" id="pointList" aria-label="導覽順序"></ol>
+        <div class="form" id="pointFilters" hidden><label>搜尋互動點<input id="pointSearch" type="search" maxlength="120" placeholder="編號、標題或說明"></label><label>顯示狀態<select id="pointFilter"><option value="all">全部互動點</option><option value="visible">僅顯示中的點</option><option value="hidden">僅隱藏的點</option></select></label></div>
+        <p class="hint" id="noMatches" role="status" hidden>找不到符合條件的互動點。</p>
         <div class="row" id="listActions" hidden>
           <button id="upPoint" aria-label="往前排序" title="往前排序" data-icon="up"></button><button id="downPoint" aria-label="往後排序" title="往後排序" data-icon="down"></button>
           <button id="copyPoint" aria-label="複製互動點" title="複製互動點" data-icon="copy"></button><button id="togglePoint" aria-label="隱藏互動點" title="隱藏互動點" data-icon="eye"></button><button id="removePoint" aria-label="刪除互動點" title="刪除互動點" data-icon="trash"></button>
         </div>
+        <ol class="list" id="pointList" aria-label="導覽順序"></ol>
       </div>
       <div class="section"><h2>導覽設定</h2><label>瀏覽方式<select id="tourMode"><option value="free">自由探索</option><option value="guided">依序導覽</option></select></label></div>
       <div class="section"><h2>示範範本</h2><div class="row" id="demos"><button data-demo="product">商品功能</button><button data-demo="room">室內空間</button><button data-demo="website">網站教學</button></div></div>
     </aside>
     <section class="workbench" aria-label="圖片編輯畫布">
       <div class="toolbar">
-        <h2>圖片畫布</h2>
+        <div><span class="panel-kicker">WORKSPACE</span><h2>圖片畫布</h2></div>
         <div class="row">
           <button id="selectTool" aria-pressed="true" data-icon="cursor">選取</button><button id="panTool" aria-pressed="false" data-icon="hand">移動畫布</button>
           <button id="zoomOut" aria-label="縮小" title="縮小" data-icon="minus"></button><button id="zoomIn" aria-label="放大" title="放大" data-icon="plus"></button><button id="fitView">符合視窗</button><button id="actualView">100%</button>
@@ -132,7 +166,7 @@ footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-bet
         <div class="empty" id="empty">
           <div class="empty-inner">
             <svg class="empty-art" viewBox="0 0 200 105" aria-hidden="true"><rect x="8" y="9" width="184" height="87" rx="11" fill="#eaf2ff" stroke="#ccddf9"/><path d="M9 80l45-30 23 17 37-35 53 42 24-11v22a10 10 0 0 1-10 10H19a10 10 0 0 1-10-10Z" fill="#bed7ff"/><circle cx="148" cy="35" r="10" fill="#f5c982"/><g fill="#2563eb" stroke="white" stroke-width="2"><circle cx="60" cy="59" r="11"/><circle cx="116" cy="43" r="11"/><circle cx="167" cy="72" r="11"/></g><path d="M55 59h10m-5-5v10m51-21h10m-5-5v10m46 24h10m-5-5v10" stroke="white" stroke-width="1.6"/></svg>
-            <h3>從一張圖片開始</h3><p class="muted">將圖片拖到這裡，或選擇檔案。也可以載入室內範本試做。</p>
+            <h3>從一張圖片開始</h3><p class="muted">可拖放、上傳或貼上圖片，也可以載入室內範本試做。</p>
             <div class="row"><button id="emptyUpload" class="primary" data-icon="upload">選擇圖片</button><button data-demo="room">載入室內範本</button></div>
           </div>
         </div>
@@ -141,7 +175,7 @@ footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-bet
       <div class="statusbar"><span id="status" role="status">準備就緒 · 圖片在瀏覽器本機處理</span><span id="viewInfo"></span></div>
     </section>
     <aside class="panel" id="rightPanel" aria-label="互動點設定">
-      <div class="spread"><h2>互動點設定</h2><span class="badge" id="selectedBadge">尚未選取</span></div>
+      <div class="panel-head"><div><span class="panel-kicker">INSPECTOR</span><h2>互動點設定</h2></div><span class="badge" id="selectedBadge">尚未選取</span></div>
       <p id="noPoint" class="hint">點選畫布或清單上的互動點，即可編輯內容、外觀和位置。</p>
       <form id="pointForm" class="form" hidden>
         <label>內容類型<select name="type"><option value="mixed">複合內容</option><option value="text">文字資訊</option><option value="image">圖片介紹</option><option value="link">外部連結</option></select></label>
@@ -163,12 +197,12 @@ footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-bet
       </form>
     </aside>
   </div>
-  <section class="learn" aria-label="使用說明與常見問題">
+  <section class="learn" id="help" aria-label="使用說明與常見問題">
     <div class="panel"><h2>把一張圖片變成可探索的導覽</h2><p>圖片互動標記是放在圖上的可點擊按鈕，可以顯示說明、細節照片及連結。你可以為產品標出功能，替室內空間加入房間介紹，或把網站操作拆成依序瀏覽的步驟。</p><p>上傳圖片後，選擇「新增互動點」並點擊圖上的位置。完成內容與樣式後，切換預覽確認效果，再匯出完整 HTML 或複製網站嵌入碼。</p></div>
     <div class="panel"><h2>常見問題</h2><details><summary>如何放到 WordPress？</summary><p>可在允許指令碼的 Gutenberg 自訂 HTML 區塊貼上嵌入碼。若網站移除指令碼，請先將下載的 HTML 部署到 HTTPS 網址，再使用匯出區的 iframe 產生器。</p></details><details><summary>手機可以編輯嗎？這個工具免費嗎？</summary><p>可以。手機上可點選、拖曳和編輯標記，並切換不同裝置寬度預覽。工具免費使用。</p></details><details><summary>圖片會上傳嗎？</summary><p>本機圖片與專案留在目前瀏覽器。輸入的遠端圖片會連線至圖片主機。可下載 JSON 備份以便換裝置或移轉瀏覽器。</p></details></div>
   </section>
-  <footer><span>© 2026 WUMETAX · 由 WUMETAX 開發</span><span><a href="https://wumetax.com/">WUMETAX</a> · <a href="https://wumetax.com/lab/">更多免費工具</a></span></footer>
 </main>
+<footer><div><strong>圖片在你的瀏覽器中處理</strong><br>專案儲存在本機，跨裝置可使用 JSON 備份。</div><span>© 2026 WUMETAX · <a href="https://wumetax.com/">官方網站</a> · <a href="https://wumetax.com/lab/">更多免費工具</a></span></footer>
 <input type="file" id="backgroundFile" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" hidden>
 <input type="file" id="attachmentFile" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" hidden>
 <input type="file" id="projectFile" accept=".json,application/json" hidden>
@@ -177,10 +211,11 @@ footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-bet
 <dialog id="compressionDialog" aria-labelledby="compressionTitle"><div class="spread"><h2 id="compressionTitle">縮小或壓縮圖片</h2><button data-close>關閉</button></div><form class="dialog-body" id="compressionForm"><p id="compressionBefore"></p><label>最大寬度（px）<input name="width" type="number" min="64" max="8192" value="1600" required></label><label>輸出格式<select name="format"><option value="image/webp">WebP</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select></label><label>JPEG／WebP 品質（%）<input name="quality" type="number" min="10" max="100" value="85" required></label><p class="hint">JPEG 會以白色填補透明區域。原始檔案保留在你的裝置上。</p><div class="row"><button type="submit">計算處理結果</button><button type="button" id="useCompressed" class="primary" disabled>套用處理後圖片</button></div><p id="compressionAfter" role="status"></p></form></dialog>
 <dialog id="previewDialog" aria-labelledby="previewTitle"><div class="spread"><h2 id="previewTitle">作品預覽</h2><button data-close>返回編輯</button></div><div class="dialog-body">
   <div class="row"><label>裝置寬度<select id="device"><option value="1440">桌面 1440 px</option><option value="768">平板 768 px</option><option value="390">手機 390 px</option><option value="360">手機 360 px</option><option value="custom">自訂</option></select></label><label id="customDevice" hidden>自訂寬度（px）<input type="number" id="deviceWidth" min="280" max="2400" value="480"></label><label>預覽情境<select id="context"><option value="image">僅圖片</option><option value="article">網頁文章</option><option value="product">商品介紹</option></select></label><label>瀏覽方式<select id="previewTour"><option value="free">自由探索</option><option value="guided">依序導覽</option></select></label></div>
-  <div class="preview-scroll"><div class="preview-page" id="previewPage"><div id="previewBefore" class="context" hidden></div><div id="previewMount"></div><div id="previewAfter" class="context" hidden></div></div></div>
+  <div class="preview-scroll"><div class="preview-page" id="previewPage"><div class="browser-chrome" aria-hidden="true"><i></i><i></i><i></i><span>Hotspot Studio / 作品預覽</span></div><div id="previewBefore" class="context" hidden></div><div id="previewMount"></div><div id="previewAfter" class="context" hidden></div></div></div>
 </div></dialog>
 <dialog id="exportDialog" aria-labelledby="exportTitle"><div class="spread"><h2 id="exportTitle">匯出與嵌入</h2><button data-close>關閉</button></div><div class="dialog-body">
   <div class="row"><button id="downloadHtml" class="primary" data-icon="download">下載完整 HTML</button><button id="downloadJson" data-icon="download">匯出專案 JSON</button></div><p class="hint" id="exportSize"></p>
+  <details id="exportReview"><summary id="exportReviewTitle">發佈前檢查</summary><ul class="review-list" id="exportReviewList"></ul></details>
   <label>嵌入方式<select id="embedMode"><option value="inline">自包含 HTML 嵌入碼</option><option value="iframe">已部署作品的 iframe</option></select></label>
   <p class="hint" id="embedHint"></p>
   <div class="form" id="iframeFields" hidden><label>已部署的 HTTPS 網址<input id="iframeUrl" type="url" placeholder="https://example.com/guide.html" maxlength="2048"></label><div class="grid2"><label>嵌入高度（px）<input id="iframeHeight" type="number" min="160" max="3000" value="600"></label><label>嵌入標題<input id="iframeTitle" maxlength="120"></label></div><label class="check"><input id="iframeFullscreen" type="checkbox">允許全螢幕</label></div>
@@ -190,8 +225,10 @@ footer{color:var(--muted);font-size:.8rem;display:flex;justify-content:space-bet
 "use strict";
 const $ = id => document.getElementById(id);
 const iconPaths = {
-  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3"/>',
   plus:'<path d="M12 5v14M5 12h14"/>', minus:'<path d="M5 12h14"/>',
+  expand:'<path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/>',
+  clipboard:'<rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5V3h6v4H9zM8 16l3-3 2 2 3-4"/>',
+  grip:'<path d="M7 8h10M7 12h10M7 16h10"/>',
   upload:'<path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"/>',
   download:'<path d="M12 4v12m-4-4 4 4 4-4M4 15v5h16v-5"/>',
   folder:'<path d="M3 6h7l2 3h9v11H3z"/>', save:'<path d="M4 4h13l3 3v13H4zM8 4v6h8V4M8 20v-6h8v6"/>',
@@ -627,6 +664,7 @@ let selected = null;
 let past = [], future = [];
 let tool = "select", view = "fit", zoom = 1, fit = 1;
 let interaction = null;
+let draggedPoint = null;
 let fieldEdit = null;
 let mountedPreview = null;
 let compressed = null;
@@ -746,21 +784,30 @@ function renderMarkers() {
 }
 function renderList() {
   const focusId = pointList.contains(document.activeElement) ? document.activeElement.dataset.id : null;
+  const query = $("pointSearch").value.trim().toLowerCase();
+  const filter = $("pointFilter").value;
+  const filtered = Boolean(query) || filter !== "all";
   pointList.replaceChildren();
   const selectedIndex = project.points.findIndex(point => point.id === selected);
+  let selectedShown = false;
   for (const [index,point] of project.points.entries()) {
+    if ((filter === "visible" && point.hidden) || (filter === "hidden" && !point.hidden)) continue;
+    if (query && ![String(index + 1),point.title,point.subtitle,point.description,point.extra].some(value => value.toLowerCase().includes(query))) continue;
     const item = node("li");
     const button = node("button");
     button.dataset.id = point.id;
+    if (point.id === selected) selectedShown = true;
+    button.draggable = !filtered && project.points.length > 1;
     button.setAttribute("aria-pressed",String(point.id === selected));
     const body = node("span");
     body.append(node("strong","",point.title || "未命名互動點"),node("small","",types[point.type] + (point.hidden ? " · 已隱藏" : " · 顯示中")));
     button.append(node("span","num",String(index + 1)),body);
+    if (button.draggable) button.insertAdjacentHTML("beforeend",'<svg class="icon grip" viewBox="0 0 24 24" aria-hidden="true">' + iconPaths.grip + '</svg>');
     item.append(button);
     pointList.append(item);
     if (point.id === focusId) button.focus({preventScroll:true});
   }
-  $("listActions").hidden = selectedIndex < 0;
+  $("listActions").hidden = !selectedShown;
   $("upPoint").disabled = selectedIndex <= 0;
   $("downPoint").disabled = selectedIndex < 0 || selectedIndex >= project.points.length - 1;
   const label = current()?.hidden ? "顯示互動點" : "隱藏互動點";
@@ -768,7 +815,9 @@ function renderList() {
   $("togglePoint").title = label;
   $("togglePoint").setAttribute("aria-pressed",String(Boolean(current()?.hidden)));
   $("pointCount").textContent = project.points.length;
-  $("listHint").textContent = !project.image ? "上傳圖片後，即可在畫面上標記位置。" : project.points.length > 100 ? "互動點超過 100 個，較慢的裝置可能受影響。" : "從上到下為導覽順序，可用箭頭重新排序。";
+  $("pointFilters").hidden = !project.points.length;
+  $("noMatches").hidden = !project.points.length || pointList.childElementCount > 0;
+  $("listHint").textContent = !project.image ? "上傳圖片後，即可在畫面上標記位置。" : project.points.length > 100 ? "互動點超過 100 個，較慢的裝置可能受影響。" : filtered ? "搜尋和篩選只影響清單。清除條件即可拖曳排序。" : "從上到下為導覽順序，可拖曳或用箭頭排序。";
 }
 function historyUI() {
   $("undo").disabled = !past.length;
@@ -905,6 +954,7 @@ function addPoint(x,y) {
     return;
   }
   const point = makePoint(x,y,"互動點 " + (project.points.length + 1));
+  clearPointFilters();
   edit(() => { project.points.push(point); selected = point.id; },"已新增互動點，可在設定面板填寫內容。");
   showPanel("content");
   if (matchMedia("(max-width:850px)").matches) $("rightPanel").scrollIntoView({block:"nearest"});
@@ -934,6 +984,59 @@ markers.addEventListener("click",event => {
 pointList.addEventListener("click",event => {
   const button = event.target.closest("button[data-id]");
   if (button) choosePoint(button.dataset.id,{locate:true,content:true});
+});
+function clearPointFilters() {
+  $("pointSearch").value = "";
+  $("pointFilter").value = "all";
+}
+$("pointSearch").addEventListener("input",renderList);
+$("pointFilter").addEventListener("change",renderList);
+function dropHighlight(item, edge) {
+  const previous = pointList.querySelector("[data-drop]");
+  if (previous && previous === item && previous.dataset.drop === edge) return;
+  if (previous) delete previous.dataset.drop;
+  if (item) item.dataset.drop = edge;
+}
+pointList.addEventListener("dragstart",event => {
+  const button = event.target.closest("button[data-id]");
+  if (!button?.draggable) return;
+  draggedPoint = button.dataset.id;
+  event.dataTransfer.setData("text/plain",draggedPoint);
+  event.dataTransfer.effectAllowed = "move";
+});
+function dropTarget(event) {
+  const item = event.target.closest("li");
+  if (!draggedPoint || !item || !pointList.contains(item)) return null;
+  const targetId = item.firstElementChild.dataset.id;
+  if (targetId === draggedPoint) return null;
+  const rect = item.getBoundingClientRect();
+  return {item,targetId,edge:event.clientY < rect.top + rect.height / 2 ? "before" : "after"};
+}
+pointList.addEventListener("dragover",event => {
+  const target = dropTarget(event);
+  if (!target) { dropHighlight(null); return; }
+  event.preventDefault();
+  event.dataTransfer.dropEffect = "move";
+  dropHighlight(target.item,target.edge);
+});
+pointList.addEventListener("dragleave",event => {
+  if (!pointList.contains(event.relatedTarget)) dropHighlight(null);
+});
+pointList.addEventListener("drop",event => {
+  const target = dropTarget(event);
+  const source = draggedPoint;
+  draggedPoint = null;
+  dropHighlight(null);
+  if (!target) return;
+  event.preventDefault();
+  const from = project.points.findIndex(point => point.id === source);
+  const to = project.points.findIndex(point => point.id === target.targetId);
+  const boundary = to + (target.edge === "after" ? 1 : 0);
+  if (from >= 0 && to >= 0) reorderPoint(from,boundary - (from < boundary ? 1 : 0));
+});
+pointList.addEventListener("dragend",() => {
+  draggedPoint = null;
+  dropHighlight(null);
 });
 canvas.addEventListener("pointerdown",event => {
   if (interaction || !event.isPrimary || event.button !== 0 || !project.image) return;
@@ -986,10 +1089,14 @@ function finishPointer(event) {
 for (const event of ["pointerup","pointercancel","lostpointercapture"]) canvas.addEventListener(event,finishPointer);
 function shiftOrder(delta) {
   const index = project.points.findIndex(point => point.id === selected);
-  const next = index + delta;
-  if (index < 0 || next < 0 || next >= project.points.length) return;
+  reorderPoint(index,index + delta);
+}
+function reorderPoint(from,to) {
+  if (from < 0 || to < 0 || to >= project.points.length || from === to) return;
   edit(() => {
-    [project.points[index],project.points[next]] = [project.points[next],project.points[index]];
+    const [point] = project.points.splice(from,1);
+    project.points.splice(to,0,point);
+    selected = point.id;
   },"已更新導覽順序。");
 }
 function removePoint() {
@@ -1056,11 +1163,18 @@ async function stored(mode, action) {
 function markDirty() {
   dirty = true;
   project.updated = Math.max(Date.now(),project.updated + 1);
+  saveIndicator("pending","等待自動儲存");
   clearTimeout(storageTimer);
   storageTimer = setTimeout(() => persist(),550);
 }
+function saveIndicator(state,label) {
+  const badge = $("saveState");
+  badge.dataset.state = state;
+  if (badge.textContent !== label) badge.textContent = label;
+}
 function savedFailure(error) {
   storageError = true;
+  saveIndicator("error","本機儲存失敗");
   const reason = error?.name === "QuotaExceededError" ? "瀏覽器儲存空間不足。" : "無法使用此瀏覽器的本機儲存。";
   status(reason + " 請匯出專案 JSON 備份。",true);
 }
@@ -1081,6 +1195,7 @@ async function persist(manual = false) {
     if (project === captured && project.updated === data.updated) {
       dirty = false;
       storeLast(project.id);
+      saveIndicator("saved","已儲存於本機");
       if (manual || storageError) status("已儲存到此瀏覽器。");
       storageError = false;
     }
@@ -1101,12 +1216,16 @@ function setProject(next, message, save = true) {
   fieldEdit = null;
   past = [];
   future = [];
+  clearPointFilters();
   setTool("select");
   showPanel("points");
   render();
   resetView();
   if (save) markDirty();
-  else storeLast(project.id);
+  else {
+    storeLast(project.id);
+    saveIndicator(project.updated ? "saved" : "idle",project.updated ? "已儲存於本機" : "尚未儲存");
+  }
   status(message);
 }
 function ask(title, detail, options) {
@@ -1236,6 +1355,34 @@ async function uploadBackground(file) {
     showPanel("points");
   });
 }
+async function pasteBackground() {
+  let items;
+  try {
+    items = await navigator.clipboard.read();
+  } catch {
+    status("請在工作區按 Ctrl + V／⌘ + V 貼上圖片，或使用「上傳圖片」。");
+    return;
+  }
+  for (const item of items) {
+    const type = item.types.find(format => ["image/png","image/jpeg","image/webp"].includes(format));
+    if (!type) continue;
+    try {
+      const blob = await item.getType(type);
+      await uploadBackground(new File([blob],"剪貼簿圖片." + type.split("/")[1],{type}));
+    } catch {
+      status("無法讀取剪貼簿圖片，請使用「上傳圖片」。",true);
+    }
+    return;
+  }
+  status("剪貼簿沒有可用的圖片。請先複製 JPG、PNG 或 WebP 圖片。");
+}
+document.addEventListener("paste",event => {
+  if (event.target.closest?.("input,textarea,select,[contenteditable]") || document.querySelector("dialog[open]")) return;
+  const file = [...(event.clipboardData?.files || [])].find(item => item.type.startsWith("image/"));
+  if (!file) return;
+  event.preventDefault();
+  void uploadBackground(file);
+});
 function fileInput(input, handle) {
   $(input).addEventListener("change",event => {
     const file = event.target.files[0];
@@ -1375,7 +1522,60 @@ function openExport() {
   $("iframeTitle").value = settings.iframeTitle || project.name;
   $("iframeFullscreen").checked = settings.iframeFullscreen;
   refreshEmbed();
+  renderExportReview();
   $("exportDialog").showModal();
+}
+function renderExportReview() {
+  const list = $("exportReviewList");
+  list.replaceChildren();
+  function addIssue(text, fix) {
+    const item = node("li","",text);
+    if (fix) {
+      const button = node("button","","前往修改");
+      button.setAttribute("aria-label","前往修改：" + text);
+      button.addEventListener("click",() => {
+        $("exportDialog").close();
+        fix();
+      });
+      item.append(button);
+    }
+    list.append(item);
+  }
+  if (!project.image) {
+    addIssue("尚未加入背景圖片。");
+  } else {
+    if (!project.image.alt.trim()) addIssue("背景圖片缺少替代文字。",() => {
+      showPanel("points");
+      $("imageAlt").focus();
+      $("imageAlt").scrollIntoView({block:"center"});
+    });
+    const visible = project.points.filter(point => !point.hidden).length;
+    if (!visible) addIssue("目前沒有會顯示在作品中的互動點。");
+    for (const [index,point] of project.points.entries()) {
+      if (point.hidden) continue;
+      const imageType = ["mixed","image"].includes(point.type);
+      const linkType = ["mixed","link"].includes(point.type);
+      const withImage = imageType && Boolean(point.attachment || point.remote);
+      const withLink = linkType && Boolean(point.url);
+      const issues = [];
+      if (!point.title.trim()) issues.push("缺少標題");
+      if (!withImage && !withLink && ![point.subtitle,point.description,point.extra].some(text => text.trim())) issues.push("沒有介紹內容");
+      if (point.type === "image" && !withImage) issues.push("缺少附圖");
+      if (withImage && !point.alt.trim()) issues.push("附圖缺少替代文字");
+      if (point.type === "link" && !withLink) issues.push("缺少有效連結");
+      if (!issues.length) continue;
+      addIssue("第 " + (index + 1) + " 點「" + (point.title.trim() || "未命名") + "」" + issues.join("、") + "。",() => {
+        clearPointFilters();
+        choosePoint(point.id,{content:true});
+        form.elements.namedItem("title").focus();
+        $("rightPanel").scrollIntoView({block:"start"});
+      });
+    }
+  }
+  const count = list.childElementCount;
+  $("exportReviewTitle").textContent = count ? "發佈前檢查 · " + count + " 項可改善" : "發佈前檢查 · 已完成";
+  $("exportReview").open = count > 0;
+  if (!count) addIssue("背景替代文字與可見互動點的內容均已填寫。");
 }
 $("exportDialog").addEventListener("close",() => {
   $("embedCode").value = "";
@@ -1410,6 +1610,16 @@ action("undo",() => undoRedo(false));
 action("redo",() => undoRedo(true));
 action("uploadImage",() => $("backgroundFile").click());
 action("emptyUpload",() => $("backgroundFile").click());
+action("pasteImage",pasteBackground);
+function setWorkspaceFocus(focused) {
+  document.body.classList.toggle("focus-workspace",focused);
+  const button = $("focusWorkspace");
+  button.setAttribute("aria-pressed",String(focused));
+  button.setAttribute("aria-label",focused ? "離開專注模式" : "專注模式");
+  button.title = button.getAttribute("aria-label");
+  if (focused) window.scrollTo(0,0);
+}
+action("focusWorkspace",() => setWorkspaceFocus(!document.body.classList.contains("focus-workspace")));
 action("clearImage",() => run(async () => {
   if (project.points.length) {
     const result = await ask("清除圖片與互動點？","清除後可用「復原」找回這次操作前的內容。",[["clear","清除"],["cancel","取消",true]]);
@@ -1563,7 +1773,11 @@ document.addEventListener("keydown",event => {
     return;
   }
   if (inField || interaction) return;
-  if (event.key === "Escape" && tool !== "select") setTool("select");
+  if (event.key === "Escape") {
+    if (tool !== "select") setTool("select");
+    else if (document.body.classList.contains("focus-workspace")) setWorkspaceFocus(false);
+    return;
+  }
   if (event.altKey && event.key === "Enter" && tool === "add") {
     event.preventDefault();
     addPoint(50,50);
